@@ -5,6 +5,9 @@ tags: [动画, animate]
 category: 学习
 ---
 
+Velocity是一款能够构建出令人难以置信的快速的动画的js动画引擎。它可以依赖jQuery或者独立使用。而且支持颜色动画，变形类动画，循环，缓动，SVG动画和滚动。它是jQuery和CSS过渡的完美结合。
+<!-- more -->
+
 ## Velocity简介
 
 > Velocity是一款有着与jQuery类似的API的动画引擎，例如$.animate()。它可以依赖jQuery或者独立使用。它构建的动画令人难以置信的快。而且支持颜色动画，变形类动画，循环，缓动，SVG动画和滚动。它是jQuery和CSS过渡的完美结合。
