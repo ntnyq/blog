@@ -1,6 +1,7 @@
 ---
 title: Node内置模块fs简单文件操作
 description: 学习简单的Node文件操作，方便写些简单的脚本。
+date: 2017-11-03 22:04:37
 tags: [Node, 文件]
 category: 学习
 ---

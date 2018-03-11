@@ -1,6 +1,7 @@
 ---
 title: 初试芒果数据库mongodb。
 description: mongodb是一个面向文档的noSQL形式的数据库管理系统。
+date: 2017-11-13 22:04:37
 tags: [mongodb, 数据库]
 category: 后端
 ---

@@ -1,6 +1,7 @@
 ---
 title: 面向对象三大特征之JavaScript版
 description: 面向对象三大特性继承、封装和多态在JavaScript中的实现。
+date: 2017-06-09 22:04:37
 tags: [oop, 面向对象]
 category: 学习
 ---

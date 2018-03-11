@@ -1,6 +1,7 @@
 ---
 title: ES6对象扩展方法学习。
 description: ES6是开发的一种趋势，虽然仍然存在有兼容性问题，但我们可以通过工具将其编译成ES5来使用，而ES6带来的开发效率提升是显著的。
+date: 2017-05-09 22:04:37
 tags: [ES6, Object]
 category: 学习
 ---
@@ -18,7 +19,7 @@ ES6规定了以字面量的形式创建对象时的简洁写法。
 - 直接写入一个变量，后面加逗号，则会以变量名做为对象的属性名，以变量值做为对应的属性值。
 - 直接写一个变量做为方法名，后面跟括号写入方法参数，接着在大括号里写上函数的内容。
 
-```
+``` js
 let name = 'ntnyq';
 
 let user = {
@@ -50,7 +51,7 @@ Object.is()方法用于进行`同值相等`的比较，为了解决传统的`===
 
 **不同之处只有两个：一是+0不等于-0，二是NaN等于自身。**
 
-```
+``` js
 +0 === -0 // true
 NaN === NaN // false
 
@@ -64,7 +65,7 @@ Object.assign()方法，用于将至少1个对象的可枚举属性合并到目�
 
 语法
 
-```
+``` js
 Object.assign(target, source1, source2, ...);
 
 Object.assign({a: 1}, {b: 2}, {c: 3}); // {a: 1, b: 2, c: 3}
@@ -98,7 +99,7 @@ ES5引入了`Object.keys()`方法，返回一个数组，成员是参数对象�
 
 ES6引入了`Object.values()`与`Object.entries()`来返回对象的键值和名与值组成的数组。
 
-```
+``` js
 let {keys, values, entries} = Object // 对象的结构赋值
 
 let obj = { a: 1, b: 2, c: 3 };
@@ -127,7 +128,7 @@ for (let key of entries(obj)) {
 
 **解构赋值是浅拷贝**
 
-```
+``` js
 let obj = { a: 1, b: 2, c: 3, d: 4};
 
 let { a, b, ...c } = obj

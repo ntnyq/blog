@@ -1,6 +1,7 @@
 ---
 title: 初试AngularJS框架
 description: 工作需要简单研究一下AngularJS的API。
+date: 2017-10-26 20:40:44
 tags: [angular, JS框架]
 category: 学习
 ---

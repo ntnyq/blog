@@ -1,6 +1,7 @@
 ---
 title: HTML跳转期间传递消息。
 description: 最近用到的一个小技术，在HTML页面跳转的时候传递消息到另个页面。
+date: 2017-11-10 22:04:37
 tags: [HTML, javascript]
 category: 学习
 ---
@@ -15,7 +16,7 @@ category: 学习
 
 **经测试可行**
 
-```
+``` html
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -43,7 +44,7 @@ category: 学习
 </html>
 ```
 
-```
+``` html
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -70,7 +71,7 @@ category: 学习
 
 url的search段实现，**可行**
 
-```
+``` html
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -97,7 +98,7 @@ url的search段实现，**可行**
 </html>
 ```
 
-```
+``` html
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -118,7 +119,7 @@ url的search段实现，**可行**
 
 将内容存至url的hash段**仍然可行**
 
-```
+``` html
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -145,7 +146,7 @@ url的search段实现，**可行**
 </html>
 ```
 
-```
+``` html
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>

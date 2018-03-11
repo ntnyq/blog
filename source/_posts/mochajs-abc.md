@@ -1,6 +1,7 @@
 ---
 title: 测试框架Mocha简单入门
 description: 学习如何测试自己的代码。
+date: 2017-09-16 22:04:37
 tags: [测试, Mocha]
 category: 学习
 ---

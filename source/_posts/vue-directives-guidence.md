@@ -1,6 +1,7 @@
 ---
 title: vue常用指令
 description: 小巧但却强大的双向数据绑定框架vue。
+date: 2017-10-23 18:04:37
 tags: [vue, javascript]
 category: 学习
 ---

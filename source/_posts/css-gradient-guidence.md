@@ -1,6 +1,7 @@
 ---
 title: 深入探究CSS3渐变的那些事儿。
 description: 优雅而又强大的API，我们也许现在不能在生产中广泛使用，但是也要深入学习一下。
+date: 2017-11-26 22:04:37
 tags: [渐变, CSS3]
 category: 学习
 ---
@@ -19,7 +20,7 @@ CSS3渐变(gradient)分为线性渐变(linear-gradient)和径向渐变(radial-gr
 
 因为浏览器内核的不同，我们需要使用浏览器厂商前缀的兼容写法：
 
-```
+``` css
 background: linear-gradient([<point> || <angle>] ? <stop>, <stop>[, <stop>]*); // 标准写法
 background: -webkit-linear-gradient([<point> || <angle>] ? <stop>, <stop>[, <stop>]*);
 background: -moz-linear-gradient([<point> || <angle>] ? <stop>, <stop>[, <stop>]*);
@@ -43,7 +44,7 @@ background: -o-linear-gradient([<point> || <angle>] ? <stop>, <stop>[, <stop>]*)
 
 #### 例子
 
-```
+``` css
 background: linear-gradient(left,red,orange,yellow,green,blue,indigo,violet);
 background: -webkit-linear-gradient(left,red,orange,yellow,green,blue,indigo,violet);
 background: -moz-linear-gradient(left,red,orange,yellow,green,blue,indigo,violet);
@@ -58,7 +59,7 @@ background: -o-linear-gradient(left,red,orange,yellow,green,blue,indigo,violet);
 
 重复的线性渐变创建方法如下：
 
-```
+``` css
 background: -webkit-repeating-linear-gradient(red, yellow 10%, green 15%);
 background: -o-repeating-linear-gradient(red, yellow 10%, green 15%);
 background: -moz-repeating-linear-gradient(red, yellow 10%, green 15%);
@@ -73,7 +74,7 @@ background: repeating-linear-gradient(red, yellow 10%, green 15%);
 
 #### 语法：
 
-```
+``` css
 background: radial-gradient([<position> || <angle>,]? [<shape>] [<size>,]? <color-stop>, <color-stop>[, <color-stop>]*);
 ```
 
@@ -90,7 +91,7 @@ background: radial-gradient([<position> || <angle>,]? [<shape>] [<size>,]? <colo
 
 #### 例子
 
-```
+``` css
 background: -webkit-radial-gradient(white, green, orange);
 background: -o-radial-gradient(white, green, orange);
 background: -moz-radial-gradient(white, green, orange);
@@ -100,7 +101,7 @@ background: radial-gradient(white, green, orange);
 
 #### 重复的径向渐变
 
-```
+``` css
 background: -webkit-repeating-radial-gradient(red, yellow 10%, green 15%);
 background: -o-repeating-radial-gradient(red, yellow 10%, green 15%);
 background: -moz-repeating-radial-gradient(red, yellow 10%, green 15%);

@@ -1,6 +1,7 @@
 ---
 title: 移动端事件汇总学习
 description: 移动端基础事件简单学习。
+date: 2017-04-17 22:04:37
 tags: [移动端, 前端]
 category: 学习
 ---

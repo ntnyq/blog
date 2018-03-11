@@ -1,6 +1,7 @@
 ---
 title: 拖拽API简单应用
 description: H5提供了更简单易用的拖拽API，在现代浏览器也有着比较好的兼容性。
+date: 2017-09-28 22:04:37
 tags: [h5, 拖拽]
 category: 学习
 ---
@@ -13,7 +14,7 @@ category: 学习
 
 例如我们有一个div元素，我们希望它是可拖动的：
 
-```
+``` html
 <div class="aim" id="aim" draggable="true"></div>
 ```
 
@@ -39,7 +40,7 @@ category: 学习
 
 ## demo
 
-```
+``` html
 // html
 <div class="aim" id="aim" draggable="true"></div>
 <div class="box" id="box"></div>

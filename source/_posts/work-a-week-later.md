@@ -1,6 +1,7 @@
 ---
 title: 工作一周后有感
 description: 前端工作一周了。
+date: 2017-06-03 08:23:37
 tags: [生活, 前端]
 category: 工作
 ---

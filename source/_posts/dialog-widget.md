@@ -1,6 +1,7 @@
 ---
 title: 组件开发学习及简单实例
 description: 组件开发是协作开发的基础。
+date: 2017-05-13 22:04:37
 tags: [组件, 前端]
 category: 学习
 ---
@@ -16,7 +17,7 @@ category: 学习
 ### 第二步 构架
 
 将代码放入到如下结构中 防止变量的全局污染
-```
+``` js
 ;(function(win, doc) {
    'use strict'; // 此句可以不加
 })(window, document);
@@ -25,7 +26,7 @@ category: 学习
 ### 第三步 构造函数
 使用以下两种方式创建构造函数
 
-```
+``` js
 // 1
 function Foo(xx, xx) {
 
@@ -40,7 +41,7 @@ var Bar = function (xx, xx){
 
 使用如下方法给构造函数的原型添加方法
 
-```
+``` js
 // 1
 Foo.prototype.method1 = function () {
 
@@ -73,7 +74,7 @@ Bar.prototype = {
 
 ### 第六步 将构造函数挂载到全局对象
 
-```
+``` js
 win.Foo = Foo;
 ```
 
@@ -83,7 +84,7 @@ win.Foo = Foo;
 > 给原型绑定事件的时候，因为事件不是发生在原型上 所以要把原型对象存入变量
 
 
-```
+``` js
 var _this = this;
 
       xxx.onsomething = function (e) {
@@ -94,7 +95,7 @@ var _this = this;
 
 ## 组件开发简单实例
 
-```
+``` js
 // js部分
 
 ;(function (win, doc) {
@@ -217,7 +218,7 @@ var _this = this;
 })(window, document);
 ```
 
-```
+``` html
 // html部分
 <!DOCTYPE html>
 <html lang="zh-CN">

@@ -1,6 +1,7 @@
 ---
 title: ES6数组方法及应用介绍
 description: ES6非常优雅，我们应该学习并且将它用到工作实践中。
+date: 2017-05-03 22:04:37
 tags: [ES6, javascript]
 category: 学习
 ---
@@ -20,7 +21,7 @@ ES6推出了许多新的语言特性和API，它们使得javascript变得更加�
 
 ### 数组去重
 
-```
+``` js
 // ES5数组去重
 Array.prototype.unique = function(){
   return this.filter(function(value, index, array) {
@@ -33,7 +34,7 @@ console.log(arr.unique());
 
 ```
 
-```
+``` js
 // ES6数组去重
 Array.prototype.unique = function(){
   return Array.from(new Set(this));
@@ -48,7 +49,7 @@ console.log(arr.unique());
 
 [ES6数组乱序](http://www.qdfuns.com/notes/35320/be376f860af8d2b5aace2957a2bed282.html)
 
-```
+``` js
 // ES6数组乱序
 let random = (max) => Math.floor(Math.random() * max)
 

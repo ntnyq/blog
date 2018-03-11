@@ -1,6 +1,7 @@
 ---
 title: CSS小技巧
 description: 能用CSS实现的，就用CSS来实现。
+date: 2017-07-12 22:04:37
 tags: [CSS, 前端]
 category: 学习
 ---
@@ -9,7 +10,7 @@ category: 学习
 
 ## 单行多行文本溢出隐藏
 
-```
+``` css
 // 仅支持PC端webkit内核浏览器和移动端
 // less mixin写法 需要给出宽度
 
@@ -30,7 +31,7 @@ category: 学习
 
 ## 滚动条美化
 
-```
+``` css
 // 常用属性 前3个
 // 全局修改所有的滚动条样式 也可以写在选择器后局部修改
 
@@ -45,7 +46,7 @@ category: 学习
 
 ## placeholder样式修改
 
-```
+``` css
 /* 兼容 修改 placeholder默认颜色 */
 ::-webkit-input-placeholder {
   /* WebKit browsers */
@@ -71,7 +72,7 @@ category: 学习
 
 > 做类似互发消息的需求时候可以用的到的属性。因为有消息的发送者和接受者，如果发送消息特别短，那么就应该是两端对齐的，而如果发送多行消息。末行就会向两端对齐，不符合人的阅读规律，可以使用此属性来修复。
 
-```
+``` css
 text-align-last // 设置或检索一个块内的最后一行的对齐方式
 
 可选值
@@ -141,7 +142,7 @@ body {
 
 今天工作中遇到的一个问题，在SF上找到的解决方案，据说苹果官网移动端有类似效果。
 
-```
+``` html
 // html
 <div class="nav">
   <div class="list">

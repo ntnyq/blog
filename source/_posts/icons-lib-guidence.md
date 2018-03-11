@@ -1,6 +1,7 @@
 ---
 title: 探究图标库的使用
 description: 图标表达的含义比文字更加直观，也更加友好，是现代页面设计不可缺少的一部分。
+date: 2017-06-23 21:04:37
 tags: [图标, icons]
 category: 学习
 ---
@@ -52,7 +53,7 @@ category: 学习
 
 第一步：拷贝项目下面生成的font-face
 
-```
+``` css
 @font-face {
     font-family: "iconfont";
     src: url('iconfont.eot'); /* IE9*/
@@ -65,7 +66,7 @@ category: 学习
 
 第二步：定义使用iconfont的样式
 
-```
+``` css
 .iconfont {
   font-family:"iconfont" !important;
   font-size:16px;
@@ -78,7 +79,7 @@ category: 学习
 
 第三步：挑选相应图标并获取字体编码，应用于页面
 
-```
+``` html
 <i class="icon iconfont">&#xe600;</i>
 ```
 
@@ -88,13 +89,13 @@ category: 学习
 
 第一步：引入下载项目生成的js文件
 
-```
+``` html
 <script src="./iconfont.js"></script>
 ```
 
 第二步：加入通用css代码（引入一次就行）
 
-```
+``` css
 .icon {
   /* 通过设置 font-size 来改变图标大小 */
   width: 1em; height: 1em;
@@ -110,7 +111,7 @@ category: 学习
 
 第三步：挑选相应图标并获取类名，应用于页面：
 
-```
+``` html
 <svg class="icon" aria-hidden="true">
     <use xlink:href="#icon-kefuyouxian"></use>
 </svg>
@@ -127,13 +128,13 @@ category: 学习
 
 第一步：引入项目下面生成的fontclass代码：
 
-```
+``` html
 <link rel="stylesheet" type="text/css" href="./iconfont.css">
 ```
 
 第二步：挑选相应图标并获取类名，应用于页面：
 
-```
+``` html
 <i class="iconfont icon-xxx"></i>
 ```
 

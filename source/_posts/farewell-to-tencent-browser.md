@@ -1,6 +1,7 @@
 ---
 title: 注册谷歌账号，卸载QQ浏览器
 description: 卸载了用了4年的QQ浏览器。
+date: 2017-09-15 22:04:37
 tags: [浏览器, 账号]
 category: 分享
 ---

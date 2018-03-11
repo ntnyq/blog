@@ -1,6 +1,7 @@
 ---
 title: webpack入门学习-基础篇
 description: webpack是目前很流行的打包工具，但是它的高度配置特性可以使得它有替代自动化构建工具的能力，而且vue-cli本身也是集成webpack的，作为vue的学习者了解它是很有必要的。
+date: 2018-01-22 11:36:37
 tags: [webpack, 自动化]
 category: 学习
 ---

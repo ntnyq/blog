@@ -1,6 +1,7 @@
 ---
 title: JavaScript面向对象之对象创建
 description: 如何使用Javascript语言创建对象，并且介绍面向对象编程方式的特点。
+date: 2017-06-03 22:04:37
 tags: [面向对象, OOP]
 category: 学习
 ---

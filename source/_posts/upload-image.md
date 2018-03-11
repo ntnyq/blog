@@ -1,6 +1,7 @@
 ---
 title: 图片上传预览
 description: 工作中踩坑之-----图片上传预览。
+date: 2017-04-18 12:04:37
 tags: [踩坑, 前端, upload]
 category: 工作
 ---

@@ -1,6 +1,7 @@
 ---
 title: 初试Mockjs与模拟数据
 description: 学习如何使用mockjs生成假数据来做前端开发中的数据请求。
+date: 2017-09-29 22:04:37
 tags: [数据, 前端, mockjs]
 category: 学习
 ---

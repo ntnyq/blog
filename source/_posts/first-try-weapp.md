@@ -1,6 +1,7 @@
 ---
 title: 如何做一个无用的微信小程序。
 description: 今天花了半天的时间阅读微信小程序API，然后实现了一个又难看又没有什么用的微信小程序。
+date: 2017-07-25 22:04:37
 tags: [小程序, 移动端]
 category: 前端
 ---
@@ -150,13 +151,13 @@ category: 前端
 
     我们可以在onLoad生命周期函数中传入一个对象，再通过这对象下面的key来获取对应的value。
 
-    ```
-    Page ({
-        onLoad (opts) {
-            let val = opts.key
-        }
-    })
-    ```
+``` js
+Page ({
+    onLoad (opts) {
+        let val = opts.key
+    }
+})
+```
 
 5. 格式化字符串再模板输出
 

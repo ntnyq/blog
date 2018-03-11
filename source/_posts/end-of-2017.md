@@ -1,6 +1,6 @@
 ---
 title: 再见2017
-tags: []
+tags: [感悟]
 date: 2017-12-31 23:26:42
 description: 2017年度总结，再见我的2017。
 category: 生活

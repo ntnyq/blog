@@ -1,6 +1,7 @@
 ---
 title: 代码高亮插件highlight.js
 description: 如何在博客或者文章中高亮代码。
+date: 2017-06-23 22:04:37
 tags: [代码高亮, 插件]
 category: 学习
 ---

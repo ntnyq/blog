@@ -1,6 +1,7 @@
 ---
 title: 简单学习jwplayer播放器
 description: 工作需要，学习一下jwplayer播放器的使用。
+date: 2017-10-21 22:04:37
 tags: [插件, 播放器]
 category: 学习
 ---

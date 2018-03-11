@@ -1,6 +1,7 @@
 ---
 title: 初试velocity动画引擎
 description: velocity动画引擎，兼容性不错，而且是Js动画库，了解学习一下。
+date: 2017-08-28 21:04:37
 tags: [动画, animate]
 category: 学习
 ---

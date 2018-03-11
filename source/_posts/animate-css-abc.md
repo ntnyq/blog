@@ -1,6 +1,7 @@
 ---
 title: Animate.css简单学习。
 description: H5的时代了，前端不会点动画怎么行。不会设计没关系，animate内置多种动画形式，方便你的使用。
+date: 2017-09-28 22:04:37
 tags: [CSS3, 动画]
 category: 学习
 ---

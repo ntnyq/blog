@@ -1,6 +1,7 @@
 ---
 title: 9月：最近工作总结
 description: 到底该不该加班。
+date: 2017-09-25 22:04:37
 tags: [工作, 总结]
 category: 生活
 ---
@@ -21,7 +22,7 @@ category: 生活
 
 经过思考和实践后，我决定采用rem单位来进行布局，布局方案如下:
 
-```
+``` js
 var BASE_FONT_SIZE = 100; // 字体大小基数
 var BASE_CLIENT_WIDTH = 1920; // 屏幕尺寸基数
 !function (win, doc) {
@@ -34,7 +35,7 @@ var BASE_CLIENT_WIDTH = 1920; // 屏幕尺寸基数
 
 设计图给的尺寸是`3200px*1800px`，为了方便样式编写，采用了`less`作为`CSS预处理`预处理器。使用如下`mixin`来编写样式。
 
-```
+``` less
 .z(@name, @num) {
   @{name}: @num * (1920 / 3200) / 100rem;
 }
@@ -71,7 +72,7 @@ var BASE_CLIENT_WIDTH = 1920; // 屏幕尺寸基数
 
 这里主要注意一个这两者配合的坑。要采用如下的方法实现。
 
-```
+``` js
 for (int i = 0, i < n; i++) {
     function(i) {
         setTimeout(function () {

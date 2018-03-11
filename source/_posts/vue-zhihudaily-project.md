@@ -1,6 +1,7 @@
 ---
 title: vue-zhihudaily项目踩坑总结
 description: 一个小小的练手项目。
+date: 2017-04-21 16:04:37
 tags: [vue, 前端]
 category: 学习
 ---
