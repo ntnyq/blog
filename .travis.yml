@@ -8,7 +8,7 @@ cache:
   directories:
     - node_modules
 
-# Build Lifecycle
+# Install scripts
 install:
   - npm install
 

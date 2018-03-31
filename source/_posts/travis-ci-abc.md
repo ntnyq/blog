@@ -11,6 +11,13 @@ category: 学习
 
 ## Travis介绍
 
+[Travis CI](https://travis-ci.org/)为软件开发领域提供在线的、分布式的**持续集成服务**。
+
+目前，它只能用于绑定Github上面的项目。
+
+它提供了一个运行环境。当你往Github仓库中Push了新的代码后，仓库的变更就会触发Travis CI的持续集成服务。执行测试，完成构建，再部署到服务器。
+
+
 ## 原理
 
 ## Travis接入
