@@ -16,7 +16,7 @@ date: 2017-11-20 19:08:50
 - [Github](https://github.com/)
 - [Stack Overflow](https://stackoverflow.com/)
 - [前端网](http://www.qdfuns.com/)
-- [segmentfault](https://segmentfault.com/t/%E5%89%8D%E7%AB%AF)
+- [Segment Fault](https://segmentfault.com/t/%E5%89%8D%E7%AB%AF)
 
 
 ## 工具站点
@@ -55,8 +55,13 @@ date: 2017-11-20 19:08:50
 
 ## 自动化
 
+### 构建
+
 - [Gulp](http://www.gulpjs.com.cn/)
 - [Webpack](https://webpack-china.org/)
+- [Parcel](https://parceljs.org/)
+
+### 部署
 - [Travis CI](https://travis-ci.com/first_sync)
 
 ### 自动化插件
@@ -80,10 +85,17 @@ date: 2017-11-20 19:08:50
 - [Bootstrap](http://v3.bootcss.com/)
 - [Semantic UI](https://semantic-ui.com/)
 - [Foundation](http://www.foundcss.com/)
+
+### Vue UI框架
+
 - [Muse UI - Vue](http://www.muse-ui.org/#/index)
 - [Element UI - Vue]](http://element.eleme.io/#/zh-CN/)
 - [Mint UI - Vue](http://mint-ui.github.io/#!/zh-cn)
 - [iView - Vue](https://www.iviewui.com/)
+
+### React UI框架
+
+- [AntDesign Pro](https://pro.ant.design/index-cn)
 
 
 ### web框架
@@ -95,10 +107,10 @@ date: 2017-11-20 19:08:50
 
 - [Electron](https://electronjs.org/)
 
+## 包管理
 
-## Node
-
-- [Node](https://nodejs.org/en/)
+- [NPM](https://www.npmjs.com/)
+- [Yarn](https://yarnpkg.com/zh-Hans/)
 
 
 ## 插件库
@@ -137,7 +149,7 @@ date: 2017-11-20 19:08:50
 
 ### 时间
 
-- [Momentjs]()
+- [Momentjs](https://momentjs.com/)
 - [TimeAgo](http://timeago.org/)
 
 
@@ -145,13 +157,14 @@ date: 2017-11-20 19:08:50
 
 - [Pug - 原名jade](https://pugjs.org/api/getting-started.html)
 - [Ejs](http://www.embeddedjs.com/)
+- [Art-template](https://aui.github.io/art-template/)
 
 
 ### 博客
 
 - [Hexo](https://hexo.io/zh-cn/)
 - [Jekyll](https://jekyllrb.com/)
-
+- [Gatsby](https://www.gatsbyjs.org/)
 
 ### 内容展现
 

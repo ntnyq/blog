@@ -213,3 +213,8 @@ style={{attrName: attrValue}} // 第一个大括号表示这是js语法 第二�
 ```
 
 
+## 参考资料
+
+- [React 入门实例教程](http://www.ruanyifeng.com/blog/2015/03/react.html)
+
+
