@@ -41,3 +41,26 @@ const isEmptyObject = (obj) => {
 ``` js
 str.replace(/<\w+>(.+?)<\/\w+>/g, function(match,$0){return $0});
 ```
+
+
+
+## 切换页面更改标题
+
+```js
+(function (d) {
+    
+  let pageTitle = '';
+
+  d.addEventListener('visibilitychange', () => {
+
+    if (d.visibilityState === 'hidden') {
+
+      pageTitle = d.title;
+      d.title = 'O(∩_∩)O哈哈~';
+    } else {
+      d.title = pageTitle;
+    }
+  }, !1);
+})(document);
+```
+

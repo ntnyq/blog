@@ -237,7 +237,7 @@ var _this = this;
 </body>
 </html>
 ```
-```
+```css
 // css部分
 html,
 body,
