@@ -6,6 +6,9 @@ tags: [JavaScript, 技巧]
 category: 学习
 ---
 
+乐在其中，是最好的学习方式。
+<!-- more -->
+
 ## 判断是否为移动端
 
 ``` js
@@ -43,12 +46,11 @@ str.replace(/<\w+>(.+?)<\/\w+>/g, function(match,$0){return $0});
 ```
 
 
-
 ## 切换页面更改标题
 
 ```js
 (function (d) {
-    
+
   let pageTitle = '';
 
   d.addEventListener('visibilitychange', () => {
