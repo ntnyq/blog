@@ -131,11 +131,11 @@ module.exports = {
 };
 ```
 
-###title 
+### title
 
 **页面主标题**  渲染在页面顶部左侧 并且指向站点根目录。
 
-### description 
+### description
 
 **页面描述**  以`meta`标签的形式渲染在head标签内部，用于SEO。
 
@@ -161,7 +161,7 @@ module.exports = {
 
 **Github仓库**  点击可以跳转至对应的Github仓库
 
-#### repoLabel 
+#### repoLabel
 
 **点击跳转仓库名称**  文本
 
