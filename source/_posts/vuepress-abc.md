@@ -173,7 +173,7 @@ module.exports = {
 
 **编辑链接文本**  用于提示 默认为`Edit this page`
 
-###更多配置
+### 更多配置
 
  更多配置请查看[官方配置文档](https://vuepress.vuejs.org/zh/default-theme-config/)
 
