@@ -31,6 +31,8 @@ CSS标准内置了一些已经实现了预定义效果的函数。比如：
 filter: <filter_funtion> | none | inherit | unset | initial;
 ```
 
+---
+
 > none表示不应用过滤器。
 >
 > 除特殊说明外，如过滤器函数接收的参数可以为百分比外，那么它也能接收对应小数参数。
@@ -92,7 +94,7 @@ filter: contrast(.5); /* 参数为小数或百分比 表示图像对比度 */
 例：
 
 ```css
-filter: drop-shadow(offset-x offset-y blur-radius spread-radius color); 
+filter: drop-shadow(offset-x offset-y blur-radius spread-radius color);
 ```
 
 参数解释:
