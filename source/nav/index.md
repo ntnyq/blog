@@ -7,7 +7,7 @@ date: 2017-11-20 19:08:50
 
 - [阮一峰 - ES6深入学习](http://www.ruanyifeng.com/blog/javascript/)
 - [铁锅 - FreeNG框架](http://ghmagical.com/)
-- [Yusen - indigo主题](https://imys.net/)
+- [Yusen - Indigo主题](https://imys.net/)
 - [老姚 - 正则表达式迷你书](http://www.qdfuns.com/house/17398/note)
 
 
@@ -30,6 +30,7 @@ date: 2017-11-20 19:08:50
 - [Regexper](https://regexper.com/)
 - [Geojson](http://geojson.io)
 - [Emoji Cheet](https://www.webpagefx.com/tools/emoji-cheat-sheet/)
+- [Shield Io-Github项目信息图标](https://shields.io/)
 
 
 ## 团队
@@ -62,6 +63,7 @@ date: 2017-11-20 19:08:50
 - [Parcel](https://parceljs.org/)
 
 ### 部署
+
 - [Travis CI](https://travis-ci.com/first_sync)
 
 ### 自动化插件
@@ -74,17 +76,19 @@ date: 2017-11-20 19:08:50
 
 ## 框架
 
-### js框架
+### JS框架
 
 - [Vue](https://vuejs.org/)
 - [Angular](http://www.angularjs.cn/)
 - [React](http://reactnative.cn/)
+
 
 ### UI框架
 
 - [Bootstrap](http://v3.bootcss.com/)
 - [Semantic UI](https://semantic-ui.com/)
 - [Foundation](http://www.foundcss.com/)
+
 
 ### Vue UI框架
 
@@ -103,6 +107,7 @@ date: 2017-11-20 19:08:50
 - [Express](http://www.expressjs.com.cn/)
 - [koa](https://koa.bootcss.com/)
 
+
 ### 桌面应用
 
 - [Electron](https://electronjs.org/)
@@ -115,7 +120,7 @@ date: 2017-11-20 19:08:50
 
 ## 插件库
 
-## 工具
+### 工具
 
 - [jQuery](http://jquery.com/)
 - [Lodash](http://lodashjs.com/)
@@ -126,7 +131,6 @@ date: 2017-11-20 19:08:50
 
 - [D3](https://d3js.org/)
 - [zRender](https://ecomfe.github.io/zrender-doc/public/)
-- [Echarts](http://echarts.baidu.com/)
 - [Highcharts](https://www.highcharts.com/)
 - [AntV](https://antv.alipay.com/zh-cn/index.html)
 
@@ -135,17 +139,6 @@ date: 2017-11-20 19:08:50
 
 - [Animate.css](https://daneden.github.io/animate.css/)
 - [Velocityjs](http://www.mrfront.com/docs/velocity.js/index.html)
-
-
-### 3D效果
-
-- [Three.js](https://threejs.org/)
-
-
-### 地图
-
-- [百度地图](http://lbsyun.baidu.com/index.php)
-
 
 ### 时间
 
@@ -163,8 +156,9 @@ date: 2017-11-20 19:08:50
 ### 博客
 
 - [Hexo](https://hexo.io/zh-cn/)
-- [Jekyll](https://jekyllrb.com/)
 - [Gatsby](https://www.gatsbyjs.org/)
+- [WordPress](https://wordpress.org/)
+
 
 ### 内容展现
 
@@ -176,9 +170,10 @@ date: 2017-11-20 19:08:50
 
 - [Docsify](https://docsify.js.org)
 - [Gatsby](https://www.gatsbyjs.org/)
+- [VuePress](https://vuepress.vuejs.org/)
 
 
-## 教程
+## Js教程
 
 - [阮一峰的JavaScript教程](http://javascript.ruanyifeng.com/)
 - [廖雪峰的JavaScript教程](https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000)
