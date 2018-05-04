@@ -131,11 +131,11 @@ module.exports = {
 };
 ```
 
-### title
+### 标题Title
 
 **页面主标题**  渲染在页面顶部左侧 并且指向站点根目录。
 
-### description
+### 描述Description
 
 **页面描述**  以`meta`标签的形式渲染在head标签内部，用于SEO。
 
@@ -147,21 +147,21 @@ module.exports = {
 
 > 主题配置项时基于主题的，vuepress官方提供了一套默认主题。它的可用配置如下：
 
-#### nav
+#### 导航Nav
 
 **顶部导航**  对象数组 每一项的格式 { text: 'nav_item_name', link: '/your_link/' }
 
 若使用items，且为数组，则会将此导航项渲染为下拉列表的格式。
 
-#### sidebar
+#### 侧栏sidebar
 
 **侧栏导航**  数组格式 填写导航目标的路径。
 
-#### repo
+#### 仓库Repo
 
 **Github仓库**  点击可以跳转至对应的Github仓库
 
-#### repoLabel
+#### 仓库名RepoLabel
 
 **点击跳转仓库名称**  文本
 
