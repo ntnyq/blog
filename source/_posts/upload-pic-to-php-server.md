@@ -24,17 +24,13 @@ category: 分享
 
 直接上代码就是了, 用的jquery写的，注释足以解释了。
 
-```
-// html
-
+```html
 <input id="file" type="file" accept="images/*" multiple="true" />
 <button id="upload" type="button">上传</button>
 <div id="preview"></div>
 ```
 
-```
-// js
-
+```js
 $(function () {
 
   var $file = $('#file'),
@@ -76,9 +72,7 @@ $(function () {
 });
 ```
 
-```
-// receive.php
-
+```php
 <?php
 $file = $_FILES['file']; // 获取传输数据
 $name = $file['name']; // 获取文件名
@@ -102,7 +96,7 @@ if(move_uploaded_file($file['tmp_name'],$upload_path.$file['name'])){
 
 ## 目录结构
 
-```
+```bash
 |-- js
 |--|-- jquery.min.js
 |--|-- main.js

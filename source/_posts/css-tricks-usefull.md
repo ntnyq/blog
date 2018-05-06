@@ -93,7 +93,7 @@ end：内容对齐结束边界。
 
 解决这个问题有以下方法：
 
-```
+``` css
 // 公共样式
 html,
 body {
@@ -143,7 +143,6 @@ body {
 今天工作中遇到的一个问题，在SF上找到的解决方案，据说苹果官网移动端有类似效果。
 
 ``` html
-// html
 <div class="nav">
   <div class="list">
     <a class="item">Lorem ipsum.</a>
@@ -155,8 +154,8 @@ body {
     <a class="item">Lorem ipsum.</a>
   </div>
 </div>
-
-// css
+```
+``` css
 .nav {
   width: 100%;
   height: 55px;
@@ -183,3 +182,19 @@ body {
   text-align: center;
 }
 ```
+
+## 利用伪元素添加计数索引
+
+假设我们要给一个列表(ul)上的每一个li加一个索引，那么可以使用如下的方法：
+
+``` css
+ul {
+  counter-reset: flag;
+}
+
+ul li:before {
+  content: counter(flag);
+  counter-increment: flag;
+}
+```
+> flag为索引名称

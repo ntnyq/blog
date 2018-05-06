@@ -20,7 +20,9 @@ momgodb是一套noSQL形式的数据库管理系统。
 
 ### 下载
 
-mongodb的环境需要安装mongodb程序。可以从[mongodb官网](https://www.mongodb.com/)下载当前稳定版本或者从github上下载[github仓库](https://github.com/mongodb/mongo)上下载所需版本的二进制文件进行编译。
+搭建mongoDB环境需要安装mongoDB程序。
+
+可以从[mongodb官网](https://www.mongodb.com/)下载当前稳定版本或者从github上下载[github仓库](https://github.com/mongodb/mongo)上下载所需版本的二进制文件进行编译。
 
 ### 安装
 
@@ -130,8 +132,6 @@ db.<collecName>.update({name: 'ntnyq'}, {name: 'lssham'}) // 指定更新符合�
 - 这里会筛选，并且更新第一条记录，而且是采用的替换更新的方式。也就是用新的记录完全覆盖原先的记录。
 - 如果我们需求增量更新，那么我们讲第二个参数指定为{$set: {name: 'lssham'}}
 - 如果我们需要一次修改多条符合要求的数据，可以追加参数`false, true`
-
-
 
 
 ### 未完待续...

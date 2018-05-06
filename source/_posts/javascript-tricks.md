@@ -6,6 +6,9 @@ tags: [JavaScript, 技巧]
 category: 学习
 ---
 
+乐在其中，是最好的学习方式。
+<!-- more -->
+
 ## 判断是否为移动端
 
 ``` js
@@ -41,3 +44,69 @@ const isEmptyObject = (obj) => {
 ``` js
 str.replace(/<\w+>(.+?)<\/\w+>/g, function(match,$0){return $0});
 ```
+
+
+## 切换页面更改标题
+
+```js
+(function (d) {
+
+  let pageTitle = '';
+
+  d.addEventListener('visibilitychange', () => {
+
+    if (d.visibilityState === 'hidden') {
+
+      pageTitle = d.title;
+      d.title = 'O(∩_∩)O哈哈~';
+    } else {
+      d.title = pageTitle;
+    }
+  }, !1);
+})(document);
+```
+
+### 复制大量文字版权附加
+
+``` js
+$('body').on('copy', function (e) {
+
+  if (typeof window.getSelection == 'undefined') {
+
+    return;
+  }
+
+  var body_element = document.body,
+      selection = window.getSelection();
+
+  if (('' + selection).length < 30) {
+
+    return;
+  }
+
+  var newdiv = document.createElement('div');
+
+  newdiv.style.position = 'absolute';
+
+  newdiv.style.left = '-99999px';
+
+  body_element.appendChild(newdiv);
+
+  newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+  if (selection.getRangeAt(0).commonAncestorContainer.nodeName == 'PRE') {
+
+    newdiv.innerHTML = '<pre>' + newdiv.innerHTML + '</pre>';
+  };
+
+  newdiv.innerHTML += '<br />著作权归作者所有。<br />商业转载请联系作者获得授权,非商业转载请注明出处。<br />原文: <a href="' + location.href + '">' + location.href + '</a> © ntnyq.com';
+
+  selection.selectAllChildren(newdiv);
+
+  window.setTimeout(function () {
+
+    body_element.removeChild(newdiv);
+  }, 200);
+});
+```
+

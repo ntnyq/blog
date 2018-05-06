@@ -92,12 +92,157 @@ $ vuepress dev .
 
 所以，周末可以好好折腾一下`Vuepress`了，试试它的各种配置，和自动化构建部署的流程。
 
+## 配置
+
+> 无配置情况下，`vuepress`会默认打开一个只有顶部标题搜索框和页面主体的页面
+
+而有关于vuepress配置的定制，官方规定全部放置于文档目录下的`.vuepress`目录内。在`.vuepress目录中`创建`config.js`文件，vuepress会自动加载其中的配置。(当然，也可以使用YAML文件等)
+
+该文件需要以`Commonjs`规范向外导出配置，主要配置项如下：
+
+```js
+module.exports = {
+  title: '程序员不好吃',
+  description: '未来的不可知，是我们前进的原动力',
+  // base: '/vuepress-demo/'
+  themeConfig: {
+    nav: [
+      { text: 'Home', link: '/' },
+      { text: 'Guide', link: '/guide/' },
+      { text: 'External', link: 'https://ntnyq.com' },
+      {
+        text: 'Languages',
+        items: [
+          { text: 'Chinese', link: '/language/chinese' },
+          { text: 'Japanese', link: '/language/japanese' }
+        ]
+      }
+    ],
+    sidebar: [
+      '/',
+      '/home/'
+    ],
+    repo: 'ntnyq/vuepress-demo',
+    repoLabel: 'Github',
+    editLinks: true,
+    // 默认为 "Edit this page"
+    editLinkText: '帮助我们改善此页面！'
+  }
+};
+```
+
+### 标题Title
+
+**页面主标题**  渲染在页面顶部左侧 并且指向站点根目录。
+
+### 描述Description
+
+**页面描述**  以`meta`标签的形式渲染在head标签内部，用于SEO。
+
+### base
+
+**站点路径** 用于部署到自定义域名，或者非`username.github.io`时启用。
+
+### 主题配置项
+
+> 主题配置项时基于主题的，vuepress官方提供了一套默认主题。它的可用配置如下：
+
+#### 导航Nav
+
+**顶部导航**  对象数组 每一项的格式 { text: 'nav_item_name', link: '/your_link/' }
+
+若使用items，且为数组，则会将此导航项渲染为下拉列表的格式。
+
+#### 侧栏sidebar
+
+**侧栏导航**  数组格式 填写导航目标的路径。
+
+#### 仓库Repo
+
+**Github仓库**  点击可以跳转至对应的Github仓库
+
+#### 仓库名RepoLabel
+
+**点击跳转仓库名称**  文本
+
+#### editeLinks
+
+**是否展现编辑文档链接**  布尔值
+
+#### editLinkText
+
+**编辑链接文本**  用于提示 默认为`Edit this page`
+
+### 更多配置
+
+ 更多配置请查看[官方配置文档](https://vuepress.vuejs.org/zh/default-theme-config/)
+
+## 样式覆盖
+
+### 简单样式覆盖
+
+需要覆盖默认主题的样式，仅需在`.vuepress`目录下新建`override.styl`
+
+文件，再编写`stylus`文件来覆盖默认样式，如下：
+
+```scss
+// showing default values
+$accentColor = #3f51b4
+$textColor = #2c3e50
+$borderColor = #eaecef
+$codeBgColor = #282c34
+```
+
+### 自定义页面类
+
+通过自定义页面类可以让某个页面拥有独特的样式，要使用这一特性，需要通过如下的方式
+
+首先，在页面的`YAML front matter`中声明一个 **pageClasss**。如下:
+
+```yaml
+---
+pageClass: custom-page-class
+---
+```
+
+然后就可以对这个页面进行自定义样式了。
+
+```css
+/* .vuepress/override.styl */
+
+.theme-container.custom-page-class {
+  /* 特定页面的 CSS */
+}
+```
+
+## 页面自定义布局
+
+首先在`YAML front matter`中指定布局组件。
+
+```yaml
+---
+layout: SpecialLayout
+---
+```
+
+然后，在`.vuepress/components/SpecialLayout.vue`中编写对应布局。
+
+## 自定义主题
+
+在`.vuepress/theme` 文件夹中，创建一个 `Layout.vue` 文件，使用`vuejs`的语法进行开发。
+
+站点和页面的**元数据**可以通过`this.$page`和`this.$site`来获取。
+
 ## 结论
 
 敲代码要细心。
 
 学会排查错误和寻找可行答案。
 
+<<<<<<< HEAD
 努力争取给开源项目做贡献，
+=======
+努力争取给开源项目做贡献。
+>>>>>>> 9ca6166cc97290a3c08a8bd667651948c6acc32a
 
 

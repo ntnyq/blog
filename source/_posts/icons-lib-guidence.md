@@ -14,6 +14,7 @@ category: 学习
 2. [Font-awesome](http://www.fontawesome.com.cn/faicons/) Bootstrap友好图标 比较丰富 可定制大小颜色阴影等CSS样式
 3. [Iconfont](http://www.iconfont.cn/collections/index) 阿里矢量图标
 4. [Material Design Icons](https://www.materialpalette.com/icons) 点击即可下载svg或者png格式
+5. 等等
 
 
 ## Iconfont使用
@@ -159,4 +160,4 @@ category: 学习
 
 > 可以通过如`fa-lg`，`fa-2x`，`fa-3x`等来调整图标大小。
 
-可以通过css设置样式。
+可以通过css设置样式，比如颜色等。
