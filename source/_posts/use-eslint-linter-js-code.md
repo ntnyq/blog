@@ -1,5 +1,5 @@
 ---
-title: use-eslint-linter-js-code
+title: 使用ESLint进行JavaScript代码检查。
 tags: [eslint]
 date: 2018-05-05 16:37:27
 description: 使用ESlint来检查你的JavaScript代码。
@@ -53,7 +53,7 @@ ESLint的使用需要通过命令行工具(**Shell**)。
 
 在使用之前，需要先配置好ESLint的代码检查规则**Rules**，否则直接使用ESLint检查代码会抛出一个如下的错误。
 
-``` 
+```
 ESLint couldn't find a configuration file. To set up a configuration file for this project, please run:
 
     eslint --init
@@ -447,7 +447,7 @@ $ eslint yourfile.js
 #### 检测多个文件
 
 ``` bash
-$ eslint foo.js bar.js 
+$ eslint foo.js bar.js
 ```
 
 #### 检测目录下所有文件
@@ -591,4 +591,3 @@ node_modules/*
 
 
 
- 

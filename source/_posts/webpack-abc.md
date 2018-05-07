@@ -51,8 +51,8 @@ const path = require('path'); // 引用path模块
 module.exports = {
     entry: './path/to/my/entry/file.js',
     output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'my-first-webpack.bundle.js'
+        path: path.resolve(__dirname, 'dist'), // 只能使用绝对路径
+        filename: 'first_webpack.bundle.js'
     }
 };
 ```
@@ -65,7 +65,7 @@ module.exports = {
 
 webpack的目标是，让webpack聚焦于项目中的所有资源(assets)，而浏览器不需要关注考虑这些(但是这不以为着所有的资源都必须打包到一起)。
 
-webpack把`每个文件(.css, .html, .scss, .jpg, etc)`都作为**模块**来处理。然而webpack自身**只理解avascript**。
+webpack把`每个文件(.css, .html, .scss, .jpg, etc)`都作为**模块**来处理。然而webpack自身**只理解Javascript**。
 
 webpack loader在文件被添加到依赖图中时，将其转换为模块。
 
@@ -96,7 +96,7 @@ module.exports = {
 }
 ```
 
-以上配置中，对一个单独的module对象定义了`rules`属性，里面包含2个必须的属性：`test`和`usse`。这告诉webpack编译器(compiler)如下信息：
+以上配置中，对一个单独的module对象定义了`rules`属性，里面包含2个必须的属性：`test`和`use`。这告诉webpack编译器(compiler)如下信息：
 
 > webpack编译器，在碰到require或者import语句中被解析为'.txt'后缀的路径时，在对其打包之前，先使用raw-loader处理一下。
 
