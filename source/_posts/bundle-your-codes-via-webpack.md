@@ -45,7 +45,7 @@ $  .\node_modules\.bin\webpack -v
 
 
 
-- Webpack Github Repo](https://github.com/webpack/webpack)  Webpack Github仓库
+- [Webpack Github Repo](https://github.com/webpack/webpack)  Webpack Github仓库
 - [Webpack Official Website](https://webpack.js.org/) Webpack官方网站
 
 
@@ -126,8 +126,9 @@ Advanced options:
   --records-path             Path to the records file                   [string]
   --define                   Define any free var in the bundle          [string]
   --target                   The targeted execution environment         [string]
-  --cache                    Enable in memory caching
-                      [boolean] [default: It's enabled by default when watching]
+  --cache                    Enable in memory caching									 [boolean] 
+                      					[default: It's enabled by default when watching]
+                      					
   --watch-stdin, --stdin     Exit the process when stdin is closed     [boolean]
   --watch-aggregate-timeout  Timeout for gathering changes while watching
   --watch-poll               The polling interval for watching (also enable
@@ -242,6 +243,8 @@ $  .\node_modules\.bin\webpack .\src\js\main.js ./dist/bundle.js --watch
 
 ### NPM Scripts使用
 
+> NPM Scripts是Nodejs为NPM提供的可以运行自定义脚本的一个配置字段。
+
 `package.json`关键部分如下：
 
 ``` bash
@@ -270,6 +273,24 @@ Webpack会自动尝试加载项目根目录下的`webpack.config.js`文件，并
 > 在项目根目录下创建`webapck.config.js`文件。
 
 `webpack.config.js`文件需要通过**Commonjs**规范导出一个`JavaScript`对象，这个对象将成为webpack的打包配置。
+
+### 添加环境变量
+
+通常情况下，我们需要将开发过程的环境分为：
+
+1. 开发环境
+2. 生产环境
+3. 测试环境
+
+在不同的环境中，我们通常会对代码的打包有不同的需求。比如在开发调试过程中，未压缩过的代码可读性更好（当然现在有sourceMap）。但是我们会希望开发过程中项目打包时间比较快，我们可能并不需要执行部分工作。而且，可能以上3个环境，我们都会有不止一个。所以，我们希望环境是可以配置的。
+
+实际应用中，我们可以通过在执行打包命令的时候以传入环境变量参数的方式来区分环境。
+
+比如，在开发环境中，我们可以将表示环境的参数设置为`development`，生产环境设置为`production`，测试环境设置为`test`。
+
+因为操作系统的原因，我们需要通过不同的方式来传入参数，比如`Mac OS`或者`Linux`中通过`NODE_ENV=env_name`来实现，而在windows中，则需要通过`set NODE_ENV=env_name`来实现。
+
+这个差异可以通过`cross-env`包来消除。
 
 这个对象主要包括了如下字段：
 
@@ -313,6 +334,8 @@ module.exports = {
 
 > 优点：可以方便利用文件的强制缓存，加快页面的加载速度，提升用户体验。
 
+参数为**数组**格式的，会将多个文件打包到一起。
+
 ### Output
 
 **Output**用于告知`webpack`打包后生成文件的目录，注意只能指定一个输出配置。
@@ -335,9 +358,47 @@ module.exports = {
 };
 ```
 
+因为要使用绝对路径，所以我们需要引入Node内置的`path`包。
+
+在配置filename的时候我们可以使用一些模板语法，如`[name]`， `[chunkHash]`，`[hash]`，分别代表：
+
+- name 指定的输入文件名，打包前的文件名
+- hash 本次打包的hash值
+- chunkHash 本文件的hash值，使用chunkHash能利用文件打包的缓存。
+
+### Devtool
+
+此字段用于配置如何生成`sourcemap`文件。
+
+可配置参数有`none`，`#cheap-module-eval-source-map`等。
+
+[详细内容与对比请戳](https://webpack.js.org/configuration/devtool/#devtool)
+
+### DevServer
+
+用于配置`webpack-dev-server`插件，常用于开发环境中开启本地开发服务器。
+
+依赖于`webpack-dev-server`包，需要另外下载：
+
+``` bash
+$ npm install webpack-dev-server -D
+
+$ yarn add webpack-dev-server --dev
+```
+
+ 此字段配置方式如下：
+
+``` js
+module.exports = {
+  devServer: {
+    contentBase: './dist/', // 服务器启动根目录
+    inline: true,
+    open: true, // 自动打开浏览器
+    hot: true, // 热更新模块
+    noInfo: true // 隐藏 更新文件时的打包信息 只在保存文件和重新打开时展现
+  }
+};
+```
 
 
-
-
-## 
 
