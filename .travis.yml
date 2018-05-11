@@ -1,5 +1,4 @@
 # Travis-CI config
-
 language: node_js
 node_js: stable
 
