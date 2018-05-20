@@ -32,16 +32,21 @@ category: 学习
 ## 滚动条美化
 
 ``` css
-// 常用属性 前3个
-// 全局修改所有的滚动条样式 也可以写在选择器后局部修改
+/* 常用属性 前3个  webkit内核 */
+/* 全局修改所有的滚动条样式 也可以写在选择器后局部修改 */ 
+::-webkit-scrollbar /* 滚动条整体 */
+::-webkit-scrollbar-thumb /* 滑块样式 */
+::-webkit-scrollbar-track /* 轨道样式 */
+::-webkit-scrollbar-button /* 轨道两端 */
+::-webkit-scrollbar-track-piece /* 轨道内层 */
+::-webkit-scrollbar-corner /* 滚动条交汇处 */
+::-webkit-resizer /* 交汇处 控制元素尺寸控件 */
 
-::-webkit-scrollbar // 滚动条整体
-::-webkit-scrollbar-thumb // 滑块样式
-::-webkit-scrollbar-track // 轨道样式
-::-webkit-scrollbar-button // 轨道两端
-::-webkit-scrollbar-track-piece // 轨道内层
-::-webkit-scrollbar-corner // 滚动条交汇处
-::-webkit-resizer // 交汇处 控制元素尺寸控件
+/* IE or Edge */
+-ms-overflow-style: none; /* 隐藏滚动条 */
+scrollbar-face-color: blue; /* 修改滑块与箭头样式 */
+
+/* FF 无法隐藏滚动条 */
 ```
 
 ## placeholder样式修改

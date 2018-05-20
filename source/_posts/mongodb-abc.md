@@ -134,7 +134,23 @@ db.<collecName>.update({name: 'ntnyq'}, {name: 'lssham'}) // 指定更新符合�
 - 如果我们需要一次修改多条符合要求的数据，可以追加参数`false, true`
 
 
-### 未完待续...
+### ## 踩坑记录
+
+记录使用时候踩到的坑。
+
+> 解决办法不一定适合每个人，不过可以尝试一下。
+
+### 客户端连接5秒断开
+
+可以通过运行`mongod`.exe正常开启**server**端，但是运行`mongo.exe`打开客户端连接服务器时候就会报下面的错误，无法正常进入`MongoDB`的命令行交互界面。
+
+```bash
+# failed to connect to 127.0.0.1:27017 after 5000ms milliseconds, giving up.
+```
+
+解决办法：关闭`Windows Defende`防火墙，或者设置`Mongo`服务到防火墙白名单。
+
+
 
 
 

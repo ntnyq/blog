@@ -49,6 +49,7 @@ date: 2017-11-20 19:08:50
 
 ## 字体图标
 
+- [谷歌字体CDN](https://www.google.com/fonts)
 - [Font Awesome](http://www.bootcss.com/p/font-awesome/)
 - [Iconfont](http://www.iconfont.cn/)
 - [Icomoon](https://icomoon.io/app/#/select)
