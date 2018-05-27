@@ -138,3 +138,15 @@ console.log(b) // 2
 console.log(c) // { c: 3, d: 4}
 ```
 
+#### 用法
+
+克隆一个对象
+
+``` js
+let obj = { name: 'foo', age: 18, say (str) { console.log(`Hello, ${str}`) }};
+
+let newObj = {...obj};
+
+// 这样的克隆对象是深拷贝
+```
+
