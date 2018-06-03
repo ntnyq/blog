@@ -110,3 +110,20 @@ $('body').on('copy', function (e) {
 });
 ```
 
+## 创建可下载文件
+
+``` js
+function createFileDownload (filename, content) {
+  
+  var aLink = document.createElement('a'),
+      blob = new Blob([content], { type: 'url' }),
+      event = new Event('click');
+  
+  aLink.download = filename;
+  aLink.href = URL.createObjectURL(blob);
+  aLink.click();
+  
+  URL.revokeObjectURL(blob); // 回收内存
+}
+```
+

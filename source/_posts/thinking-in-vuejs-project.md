@@ -236,7 +236,10 @@ module.exports = {
 
 原因，组件在异步更新之前已经渲染，这时候父子组件间还没有通过`props`来进行传值。然后在`created mounted` 的生命周期函数内，会使用默认值来进行渲染。
 
-解决方法：在需要异步更新的组件上增加`v-if`属性，通过在异步操作结束后更新标志位的方式来触发组件更新。
+解决方法：
+
+1. 在需要异步更新的组件上增加`v-if`属性，通过在异步操作结束后更新标志位的方式来触发组件更新。
+2. 使用watch功能，监听`props`传入的数据，手动更新，覆盖当前data返回的数据，触发视图更新。
 
 ### 路由访问
 
@@ -249,6 +252,40 @@ module.exports = {
 在`v-for`内部使用`template`内置组件，在上面使用`v-if`，`v-else`等逻辑，来进行条件渲染。
 
 当组件挂载到DOM上时候，`template`标签会自动移除。
+
+``` vue
+<ul class="list">
+  <li
+      v-for="(item, index) in list"
+      :key="index"
+      :class="{
+         item1: item.type === 1,
+         item2: item.type === 2,
+         item3: item.type !== 1 && item.type !== 2
+       }"
+      >
+  	<template v-if="item.type === 1">
+			<section>1</section>
+    </template>
+  	<template v-else-if="item.type === 2">
+			<section>2</section>
+    </template>	
+  	<template v-else>
+			<section>3</section>
+    </template>		
+  </li>
+</ul>
+```
+
+### UI库组件绑定的事件无法触发。
+
+原因： **Vue2.0**开始，为**自定义组件**绑定**原生事件**必须使用`.native`修饰符。
+
+``` vue
+<my-component @click.native="handleClick">Click Me</my-component>
+```
+
+[Element-ui-FAQ](https://github.com/ElemeFE/element/blob/dev/FAQ.md)
 
 ## 未完待续
 
