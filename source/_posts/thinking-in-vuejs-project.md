@@ -287,5 +287,21 @@ module.exports = {
 
 [Element-ui-FAQ](https://github.com/ElemeFE/element/blob/dev/FAQ.md)
 
+### 打包后样式丢失
+
+开发时候使用了`-webkit-box-orient: vertical;`来控制文本多行溢出隐藏。
+
+但是经过`webpack`打包后部署到线上发现该条样式丢失了，查询资料后发现是被`autoprefixer`移除了。
+
+解决方式：在该条样式前后分别加上`/*! autoprefixer: off */`和`/*! autoprefixer: on */`来跳过对该条样式的处理。
+
+### Axios的POST请求无法发送数据。
+
+因为`axios`会对post的参数进行处理，所以根据查询到的资料，使用了`qs`库。
+
+但是今天重新装了一遍依赖后，axios的请求不再发送数据，反而注释掉了有关**qs**库的使用后正常了。
+
+可能原因：先前我的`yarn.lock`文件保存到所有包的仓库都是`yarn`的官方仓库下载的，前两天我将仓库默认地址切换到了淘宝的地址，所以应该`lock`文件也无法保证下载的依赖是完全相同的了。
+
 ## 未完待续
 
