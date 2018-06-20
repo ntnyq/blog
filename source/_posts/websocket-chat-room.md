@@ -1,5 +1,5 @@
 ---
-title: WebSocket搭建简单聊天室
+title: 简单了解WebSocket
 tags: [WebSocket]
 date: 2017-12-14 21:19:52
 description: 利用websocket搭建简单的聊天室。

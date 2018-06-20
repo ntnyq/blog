@@ -62,10 +62,10 @@ document.querySelector('#box').classList.add('animated swing');
 
 可以通过监听动画结束的回调来在动画结束做别的动作
 
-```
+```js
 $('#box').on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', funtion () {
-    // doSomething
-    })
+	// doSomething
+})
 ```
 
 

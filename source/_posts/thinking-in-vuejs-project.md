@@ -210,7 +210,22 @@ module.exports = {
 }
 ```
 
+### 引入Babel-polifill
 
+Vuejs中的`.babelrc`中引用了`babel-plugin-transform-runtime`这个插件来帮助转译**ES6**方法。虽然这个插件已经足以在大多情况下，满足我们转译ES版本的需求。但同时，它仍然存在着2个问题：
+
+1. 异步加载组件的时候，会产生polyfill的代码冗余
+2. 不支持对**全局函数**和**实例方法**的polyfill
+
+它无法转译例如**Promise**，**Set**，**Map**这样的ES6新引入的全局函数，尤其是不支持转译**Promise**，对代码兼容性有很大的影响。
+
+同时，它不支持大多**数组、字符串、对象**等ES6新添加的实例方法。
+
+替换步骤如下:
+
+- 卸载依赖``babel-plugin-transform-runtime``
+- 修改`.babelrc`文件，删除`transform-runtime`
+- 在入口文件最前面(`main.js`)用代码`import 'babel-polyfill'来引入`
 
 
 ## 踩坑记录

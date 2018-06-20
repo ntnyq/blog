@@ -34,7 +34,6 @@ category: 学习
 
 - ng-disabled 元素不可用
 
-
 ```
 
 ## 模块
@@ -42,7 +41,7 @@ category: 学习
 **angular.module**函数集合
 应用被启动时候，这些函数就会执行
 
-```
+```js
 // 定义一个名为myApp的模块
 var app = angular.module('myApp', []);
 ```
@@ -69,7 +68,7 @@ $scope用户把dom元素和controller连接起来
 
 唯一的例外：有些指令属性可以选择性地创建一个独立的scope，让这个scope不继承它的父scope们。
 
-```
+```js
 app.controller('ControllerName', ['$scope', function ($scope) {
     $scope.xx = xxx;
     $scope.xx = function () {
@@ -92,7 +91,7 @@ ng-click
 使用$http函数来进行数据请求 然后将获取的数据挂到$scope上面
 需要显示地引用$http模块 如下
 
-```
+```js
 app.controller('ControllerName', function ($scope, $http) {
     $http({
         url: '',
@@ -121,7 +120,7 @@ app.controller('ControllerName', ['$scope', '$http', function($scope, $http) {
 
 2. ng-init 应用启动前时运行的函数 可以在程序运行前设置初始变量的值
 
-```
+```js
 <b ng-init="name='ntnyq'">Hello, {{ name }}</b>
 ```
 
@@ -146,7 +145,7 @@ app.controller('ControllerName', ['$scope', '$http', function($scope, $http) {
 指令命名使用小驼峰形式 使用指令时候用横线小写形式。
 
 
-```
+```js
 app.directive('ntNyq', function() {
     return {
         restrict: 'A',
@@ -178,7 +177,7 @@ Services都是单例的 每一个应用中，service对象只会被实例化一�
 
 在AngularJS中我们可以轻松建立自己的services，只需要通过注册service即可，一旦注册，编译器就可以找到并加载他们供程序执行时候随时用
 
-```
+```js
 // 用angular.module API的factory模式创建services
 
 angular.module('myApp.services', [])
@@ -193,7 +192,7 @@ angular.module('myApp.services', [])
 
 创建一个service就是简单的返回一个函数，这个函数返回一个对象。这个对象是在创建应用实例的时候创建的
 
-```
+```js
 // 创建与使用service
 app.factory('githubService', ['$http', function ($http) {
 
@@ -242,7 +241,7 @@ app.controller('ServiceController', ['$scope', 'githubService', function ($scope
 
 $document內建服务，代表window.document元素的(所有html页面里javascript的根对象)引用
 
-```
+```js
 // 这样使用  相当于document
 $document[0]
 ```
@@ -250,7 +249,7 @@ $document[0]
 通过注入$rootScope，可以来监听全局的属性
 
 在事件中可以这样来调用局部的方法
-```
+```js
 $rootScope.$apply(xxx.xx())
 ```
 
@@ -285,7 +284,7 @@ $routeProvider提供了两种方法来处理路由
     - controller
       如果在配置对象中设置了controller属性，那这个controller会在route加载的时候实例化，这个属性可以是一个字符串(必须在module中注册过的controller)也可以是controller function
     - Template模板
-    ```
+    ```js
         template: '<div><h2></h2></div>'
     ```
         如果我们在配置对象的template属性设置了值，那么模板就会被渲染到DOM中的ng-view处
@@ -300,7 +299,7 @@ $routeProvider提供了两种方法来处理路由
 
 - otherwise
 
-```
+```js
 // 路由定义实例
 angular.module('myApp', [])
     .config(['$routeProvider', function ($routeProvider) {
@@ -320,7 +319,7 @@ filter提供了一种格式化数据的方法，Angular也提供给我们了很�
 
 在HTML的模板绑定中，我们可以使用竖线 来调用过滤器，比如，我们想让字符串全部大写字符显示
 
-```
+```js
 {{ name | uppercase }}
 ```
 
@@ -337,14 +336,14 @@ $scope.name = $filter('lowercase')('Arial')
 
 比如
 
-```
+```js
 // 限制数字位数 显示小数的话 加上位数就可以
 {{ 213123.2132 | number: 2 }}
 ```
 
 常用过滤器
 
-```
+```js
 currency 数字转货币
 
 123 =>  $123.00
@@ -352,7 +351,7 @@ currency 数字转货币
 可以设置参数 来决定货币符号
 ```
 
-```
+```js
 date
 默认
 date: 'mediumDate'  Oct 28, 2017
@@ -363,7 +362,7 @@ date: 'shortDate' 11/23/16
 date: 'short' 10/29/17 8:25 AM
 ```
 
-```
+```js
 // filter过滤器主要用来过滤一个数组数据并返回一个包含子数组数据的新数组
 filter
 
@@ -406,7 +405,7 @@ orderBy
 
 创建自定义的过滤器
 
-```
+```js
 angular.module('name', [])
     .filter('filterName', function () {
     return function (input) {

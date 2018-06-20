@@ -150,3 +150,22 @@ let newObj = {...obj};
 // 这样的克隆对象是深拷贝
 ```
 
+## Object.create()
+
+返回一个新创建的对象。
+
+根据一个对象的属性和方法来创建一个新的对象，可以以类似原型链的方式获取原对象的属性和方法，却不继承原对象的原型。
+
+使用方法如下：
+
+``` js
+var obj = Object.create({ name: 'ntnyq', age: 25 });
+
+console.log(obj.name) // => 'ntnyq'
+console.log(obj.prototype) // => undefined
+```
+
+
+
+
+

@@ -197,5 +197,3 @@ filter: sepia(88%);   /* 参数为小数或百分比，表示图像转化成深�
 ## 参考资料
 
 [MDN—CSS filter](https://developer.mozilla.org/zh-CN/docs/Web/CSS/filter)
-
-使用CSS滤镜处理图片。<!-- more -->
