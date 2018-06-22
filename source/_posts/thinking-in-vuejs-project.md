@@ -307,7 +307,9 @@ Vuejs中的`.babelrc`中引用了`babel-plugin-transform-runtime`这个插件来
 
 但是经过`webpack`打包后部署到线上发现该条样式丢失了，查询资料后发现是被`autoprefixer`移除了。
 
-解决方式：在该条样式前后分别加上`/*! autoprefixer: off */`和`/*! autoprefixer: on */`来跳过对该条样式的处理。
+解决方式1：在该条样式前后分别加上`/*! autoprefixer: off */`和`/*! autoprefixer: on */`来跳过对该条样式的处理，但在开发过程中，却会报一堆警告。
+
+解决方式2： 编辑`package.json`文件内的**browserlist**字段，在其中添加**Safari 6**，打包后即可正常。
 
 ### Axios的POST请求无法发送数据。
 
