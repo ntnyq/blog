@@ -370,5 +370,30 @@ Vuejs中的`.babelrc`中引用了`babel-plugin-transform-runtime`这个插件来
 
 使用`map`方法，改变`actions`里，判断新闻项的图片字段是否为空，若为空将其修改为默认的图片链接。
 
+#### vm.$nextTick使用
+
+将回调延迟到下次DOM更新循环完成之后执行，在修改数据后立即使用它，然后等待DOM更新。
+
+与全局的Vue.nextTick不同的是，它的回调函数的this自动绑定为调用它的组件实例。
+
+##### 应用场景
+
+1. 在Vue的`created`生命周期中进行DOM操作，一定要放到`vm.$nextTick`的回调中。因为此时`DOM`可能尚未渲染。而`mounted`生命周期函数中DOM已经挂载，就不存在此问题。
+2. 在数据变化后要执行某个操作，而这个操作需要使用随数据改变而改变的DOM时，这个操作需要放入`vm.$nextTick`的回调函数中。
+
+#### 路由按需加载
+
+将路由按需加载可以减少首屏体积，提升首屏加载效率，增强用户体验。
+
+``` js
+// 普通的加载方式
+import vHome from './v-home';
+
+// webpack按需加载
+const vHome = r => require.ensure([], () => r(require('./v-home')));
+```
+
+
+
 ## 未完待续
 
