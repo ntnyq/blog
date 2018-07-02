@@ -95,8 +95,10 @@ $ git add . # 添加所有追踪的修改
 
 ### 提交修改
 
-``` bahss
+``` bash
 $ git commit -m commit_description # 描述信息用于方便查看提交记录
+
+$ git commit -am commit_description # 提交当前所有修改
 ```
 
 ## 分支
@@ -164,6 +166,12 @@ $ git merge branch_name
 
 ``` bash
 $ git branch -d branch_name
+```
+
+若当前分支存在修改未合并，则需要使用以下命令来强制进行删除：
+
+``` bash
+$ git branch -D branch_name
 ```
 
 ### 创建标签
@@ -238,11 +246,12 @@ $ git push # 当前分支只有一个追踪分支，那么主机名都可以省�
 
 ``` bash
 $ git merge # 用"pull"命令把"origin"分支上的修改拉下来并且和你的修改合并；
-# 结果看起来就像一个新的"合并的提交"(merge commit)
+$ git rebase # 结果看起来就像一个新的"合并的提交"(merge commit)
 ```
 
-
 ## 冲突解决
+
+### Merge冲突解决
 
 Tips: 你可以根据如下步骤解决冲突：
 
@@ -263,11 +272,52 @@ Tips: 你可以根据如下步骤解决冲突：
 7、git push origin releases/xx
 ```
 
+### Rebase冲突解决
+
+> `git rebase`与`git merge`的另一个区别就是它解决冲突的时候是一个一个解决的，解决步骤如下：
+
+``` bash
+$ git add -u
+
+$ git rebase --continue
+```
+
+退出`rebase`的过程，恢复先前的代码，可以使用`git rebase --abort`来退出并回退修改。
+
+
+
+
+
 ## 帮助文档
 
 ``` bash
 $ git cmd_name --help # 打开对应命令的在线网页帮助文档 内有命令的参数详细解释
 ```
+
+## Git冲突描述
+
+在我们合并，拉取代码时候，经常会遇到文件冲突的问题。
+
+打开冲突文件后，通常会看到一系列的`=>><<`符号：
+
+``` bash
+"<<<<<<<<<<<"  # 表示冲突代码开始
+
+"===========" # 表示冲突文件的不同版本的分界
+
+">>>>>>>>>>>" # 表示冲突代码的结束
+
+# 实例
+<<<<<<<<<<<<<
+name: bar
+
+==============
+name: foo
+
+<<<<<<<<<<<<
+```
+
+
 
 ## 其它
 
