@@ -1,5 +1,5 @@
 ---
-title: Travis-CI自动部署Hexo博客
+title: Travis-CI自动部署Hexo博客到Gh-Pages
 tags: [Travis]
 date: 2018-02-23 22:04:37
 description: 利用Travis-CI实现Hexo博客的在Github-Pages的自动部署。
@@ -43,28 +43,28 @@ category: 学习
 
 仓库**Push**后，会触发**Travis**读取这个文件，然后执行文件中定义好的脚本，来执行构建过程。
 
-我博客的`.travis.yml`文件的内容是：
+我博客的`.travis.yml`文件的内容如下，我在后面是加上了字段的含义。
 
 ``` yaml
 # Travis-CI config
-language: node_js
-node_js: stable
+language: node_js # 指定构建脚本执行环境为nodejs
+node_js: stable # 指定node版本为稳定版 也可以指定版本号
 
 # Cache dir config
-cache:
+cache: # 缓存设置的文件或者目录
   directories:
     - node_modules
 
 # Install scripts
-install:
+install: # 构建前下载依赖
   - npm install
 
-#before_script:
+# script: # 构建主要要执行的脚本
 script:
   - hexo g
-
-# Build LifeCycle
-after_script:
+  
+# After_script
+after_script: # 构建结束要执行的脚本
   - cd ./public
   - git init
   - git config user.name "ntnyq"
@@ -73,15 +73,23 @@ after_script:
   - git commit -m "Update blog"
   - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
 
-branches:
+branches: # github上的分支
   only:
-    - dev
-env:
+    - dev # 我的博客源码保存在了dev分支上
+env: # 构建中使用到的环境变量
  global:
    - GH_REF: github.com/ntnyq/ntnyq.github.io.git
 ```
 
+`.yml`文件使用的是`YAML`语法，这是一种以数据为中心专门用来编写配置文件的语言，非常强大。
 
+它采用空格缩进，来实现类似`JSON`的层级关系，并且支持**注释**功能。
+
+> 想对`YAML`的语法有更多了解，推荐阅读[YAML 语言教程\-阮一峰](http://www.ruanyifeng.com/blog/2016/07/yaml.html)
+
+上面的配置中使用到了2个**环境变量**，但是在配置文件里我们只写到了一个。这是因为在`git`推送代码的时候，需要你的github仓库权限。而出于安全性的考虑，这个用于验证`token`不方便直接出现在配置文件中，所以**GH_TOKEN**这个环境变量的内容保存在`travis-ci`的网站上，如下图所示： 
+
+![GH_TOKEN](http://olo2ef5ol.bkt.clouddn.com/blog/180706/6bJabfG4Gj.png?imageslim)
 
 
 
