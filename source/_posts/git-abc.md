@@ -99,6 +99,8 @@ $ git add . # 添加所有追踪的修改
 $ git commit -m commit_description # 描述信息用于方便查看提交记录
 
 $ git commit -am commit_description # 提交当前所有修改
+
+$ git commit --amend # 修改上次提交的信息 会进入编辑界面
 ```
 
 ## 分支
