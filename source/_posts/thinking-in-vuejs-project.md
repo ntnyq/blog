@@ -381,6 +381,15 @@ Vuejs中的`.babelrc`中引用了`babel-plugin-transform-runtime`这个插件来
 1. 在Vue的`created`生命周期中进行DOM操作，一定要放到`vm.$nextTick`的回调中。因为此时`DOM`可能尚未渲染。而`mounted`生命周期函数中DOM已经挂载，就不存在此问题。
 2. 在数据变化后要执行某个操作，而这个操作需要使用随数据改变而改变的DOM时，这个操作需要放入`vm.$nextTick`的回调函数中。
 
+``` js
+const _this = this;
+
+_this.$nextTick(() => {
+    
+  // do something 
+});
+```
+
 #### 路由按需加载
 
 将路由按需加载可以减少首屏体积，提升首屏加载效率，增强用户体验。
@@ -389,11 +398,18 @@ Vuejs中的`.babelrc`中引用了`babel-plugin-transform-runtime`这个插件来
 // 普通的加载方式
 import vHome from './v-home';
 
-// webpack按需加载
+// 老版本Api webpack按需加载 已不建议使用
 const vHome = r => require.ensure([], () => r(require('./v-home')));
+
+// 动态import组件
+const Foo = () => import('./Foo.vue');
 ```
 
+#### 多行文本框内容间插入符号且维持光标位置
 
+实现方式，见下面的**DEMO**。
+
+[Vue多行文本框插入内容保留光标位置DEMO](https://www.qdfuns.com/article/35320/fe8bfc756eac3e031686154bcf011e36.html)
 
 ## 未完待续
 

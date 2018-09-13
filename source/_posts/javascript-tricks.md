@@ -127,7 +127,7 @@ function createFileDownload (filename, content) {
 }
 ```
 
-### 创建从0开始自然数的数组
+## 创建从0开始自然数的数组
 
 ``` js
 [...Array(n).keys()]

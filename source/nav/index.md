@@ -66,6 +66,7 @@ date: 2017-11-20 19:08:50
 ### 部署
 
 - [Travis CI](https://travis-ci.com/first_sync)
+- []()
 
 ### 自动化插件
 
@@ -93,14 +94,16 @@ date: 2017-11-20 19:08:50
 
 ### Vue UI框架
 
-- [Muse UI - Vue](http://www.muse-ui.org/#/index)
-- [Element UI - Vue]](http://element.eleme.io/#/zh-CN/)
-- [Mint UI - Vue](http://mint-ui.github.io/#!/zh-cn)
-- [iView - Vue](https://www.iviewui.com/)
+- [Muse UI](http://www.muse-ui.org/#/index)
+- [Element UI](http://element.eleme.io/#/zh-CN/)
+- [Mint UI ](http://mint-ui.github.io/#!/zh-cn)
+- [iView ](https://www.iviewui.com/)
+- [Vuetify](https://vuetifyjs.com/zh-Hans/)
 
 ### React UI框架
 
 - [AntDesign Pro](https://pro.ant.design/index-cn)
+- [Material-UI](https://material-ui.com/)
 
 
 ### web框架
@@ -108,8 +111,23 @@ date: 2017-11-20 19:08:50
 - [Express](http://www.expressjs.com.cn/)
 - [koa](https://koa.bootcss.com/)
 
+## 小程序
 
-### 桌面应用
+### 小程序官方文档
+
+[官方文档](https://developers.weixin.qq.com/miniprogram/dev/index.html)
+
+### 小程序框架
+
+- [MpVue](http://mpvue.com/)
+- [WePy](https://tencent.github.io/wepy/)
+
+### 小程序UI库
+
+- [iView Weapp](https://weapp.iviewui.com/)
+- [WeUI](https://weapp.iviewui.com/)
+
+## 桌面应用
 
 - [Electron](https://electronjs.org/)
 
@@ -172,6 +190,7 @@ date: 2017-11-20 19:08:50
 - [Docsify](https://docsify.js.org)
 - [Gatsby](https://www.gatsbyjs.org/)
 - [VuePress](https://vuepress.vuejs.org/)
+- [Harp](https://github.com/sintaxi/harp)
 
 
 ## Js教程
