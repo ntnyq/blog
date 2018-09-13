@@ -20,6 +20,11 @@ date: 2018-05-04 15:08:50
 - [Layer-PC](http://www.layui.com/layer/)
 - [Layer-Mobile](http://layer.layui.com/mobile/)
 
+## 滚动执行动画
+
+- [scrollReveal](https://github.com/scrollreveal/scrollreveal)
+- [WOW](https://github.com/matthieua/WOW)
+
 ## 社交媒体分享
 
 - [Share.js-平台分享插件](https://github.com/overtrue/share.js)
