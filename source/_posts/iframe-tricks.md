@@ -12,6 +12,6 @@ category: 前端
 
 [iframe, 我们来谈一谈](https://segmentfault.com/a/1190000004502619)
 
-[MDN-frame](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/iframe)
+[MDN-iframe](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/iframe)
 
-[知乎-Iframe 有什么好处，有什么坏处？](https://www.zhihu.com/question/20653055)
+[知乎-iframe 有什么好处，有什么坏处？](https://www.zhihu.com/question/20653055)

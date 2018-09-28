@@ -41,7 +41,7 @@ filter: <filter_funtion> | none | inherit | unset | initial;
 
 ## 预览
 
-[在线DEMO](https://ntnyq.com/code-lib/pure-css/css-filter/)
+[在线DEMO](https://ntnyq.github.io/code-lib/pure-css/css-filter/)
 
 ## 过滤器
 
