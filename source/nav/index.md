@@ -40,6 +40,8 @@ date: 2017-11-20 19:08:50
 - [360 - 奇舞团](https://75team.com/post/list)
 - [百度 - FEX](http://fex.baidu.com/)
 - [淘宝 - FED](http://taobaofed.org/)
+- [美团技术团队 ](https://tech.meituan.com/)
+- [饿了么\-ElementFE](https://github.com/ElemeFe)
 
 
 ## CSS预处理
@@ -67,7 +69,7 @@ date: 2017-11-20 19:08:50
 ### 部署
 
 - [Travis CI](https://travis-ci.com/first_sync)
-- []()
+- [Netify](https://www.netlify.com/)
 
 ### 自动化插件
 
@@ -159,6 +161,7 @@ date: 2017-11-20 19:08:50
 
 - [Animate.css](https://daneden.github.io/animate.css/)
 - [Velocityjs](http://www.mrfront.com/docs/velocity.js/index.html)
+- [Animejs](http://animejs.com/)
 
 ### 时间
 
@@ -183,6 +186,7 @@ date: 2017-11-20 19:08:50
 ### 内容展现
 
 - [Reveal](http://lab.hakim.se/reveal-js/)
+- [Impress](https://github.com/impress/impress.js/)
 - [fancybox](http://fancybox.net/)
 
 
