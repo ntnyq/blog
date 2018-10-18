@@ -67,7 +67,7 @@ fetch('https://api.github.com/search/repositories', {
 
 ``` js
 if (this.fetch) {
-	// Fetch request is supported    
+	// Fetch request is supported
 } else {
 	// Oops, it seems you need XMLHTTPRequest
 }
