@@ -25,6 +25,10 @@ date: 2018-05-04 15:08:50
 - [scrollReveal](https://github.com/scrollreveal/scrollreveal)
 - [WOW](https://github.com/matthieua/WOW)
 
+## 头像裁剪上传
+
+- [Cropper](https://github.com/fengyuanchen/cropper)
+
 ## 社交媒体分享
 
 - [Share.js-平台分享插件](https://github.com/overtrue/share.js)
@@ -32,7 +36,6 @@ date: 2018-05-04 15:08:50
 ## 下拉刷新上滑加载
 
 - [Dropload-(已弃用)](https://github.com/ximan/dropload)
-
 
 - [MeScroll ](https://github.com/mescroll/mescroll)
 
