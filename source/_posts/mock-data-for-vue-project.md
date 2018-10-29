@@ -1,5 +1,5 @@
 ---
-title: mock-data-for-vue-project
+title: Vue项目中使用Mockjs
 tags: [Mockjs]
 date: 2018-10-22 21:44:07
 description: 如何在Vue项目中使用Mockjs。
@@ -77,7 +77,7 @@ export default = {
 import ‘./mock’ // 手动引入 不需要时需要注释代码或者删除
 
 process.env.NODE_ENV === ‘development’ && require(‘./mock’) // 打包时忽略
-``` 
+```
 
 ## Api
 
