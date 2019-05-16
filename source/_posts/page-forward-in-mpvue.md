@@ -6,15 +6,15 @@ description: MPVue框架中小程序小程序页面和wev-view跳转页面的转
 category: 前端
 ---
 
-MPVue框架中小程序小程序页面和wev-view跳转页面的转发功能实现。
+MPVue 框架中小程序小程序页面和 __web-view__ 跳转页面的转发功能实现。
 
 <!-- more -->
 
 ## 基础
 
-首先小程序转发，需要使用到 [__onShareAppMessage__](https://developers.weixin.qq.com/miniprogram/dev/reference/api/Page.html#onshareappmessageobject-object) API。
+小程序转发分享功能，依赖于 [__onShareAppMessage__](https://developers.weixin.qq.com/miniprogram/dev/reference/api/Page.html#onshareappmessageobject-object) API。
 
-从文档看，它的语法为：
+从官方文档看，它使用方法如下：
 
 ``` js
 Page({

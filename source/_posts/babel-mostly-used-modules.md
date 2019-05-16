@@ -14,14 +14,12 @@ __preset__ 的实质是特定 __plugins__ 的集合。(目前30个左右。)
 
 ```.babelrc.js
 module.exports = {
-  preset: [
+  presets: [
     [
       '@babel/preset-env',
       {
-        targets: {
-          esmodules: true // 若设置esmodules 则不会转译 `classCallCheck` 也不产生对runtime的使用
-        },
-        useBuiltIns: 'entry' // false, entry usage 建议使用usage
+        modules: false,
+        useBuiltIns: 'entry' // false, entry, usage
       }
     ]
   ]
@@ -44,11 +42,11 @@ module.exports = {
 
 __@babel/runtime__ 源码依赖并直接导出了 `regenerator-runtime`。
 
-需配合  __@babel/transform-plugin-runtine__ 使用。
+需配合  __@babel/plugin-transform-runtime__ 使用。
 
 作用：
 
-将编译过程中使用到的某些辅助函数，复用起来，在结果头部引入。
+将编译过程中使用到的某些辅助函数，复用起来，在转译后的结果头部引入。
 
 例：
 
@@ -103,10 +101,14 @@ module.exports = {
 
 ## @babel/register
 
-让非 `esModule` 环境支持使用 `impot` 等关键字进行模块导入导出。
+让非 __EsModule__ 环境支持使用 __import__ 和 __export__ 等关键字进行模块导入导出。
 
 ```js
 // main.js
 require('@babel/register')
 ```
+
+## 扩展阅读
+
+[一口（很长的）气了解 babel](https://zhuanlan.zhihu.com/p/43249121)
 
