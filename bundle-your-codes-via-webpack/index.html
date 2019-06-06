@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="Webpack,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="Webpack是目前最流行的代码打包工具，大部分命令行打包工具都有借鉴Webpack的设计思想，三大框架都选用Webpack作为推荐的打包工具，大量开源项目也使用它来进行打包，所以学会如何使用它很有必要。">
+<meta name="keywords" content="Webpack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用webpack打包你的代码">
+<meta property="og:url" content="https://ntnyq.github.io/bundle-your-codes-via-webpack/index.html">
+<meta property="og:site_name" content="程序员不好吃">
+<meta property="og:description" content="Webpack是目前最流行的代码打包工具，大部分命令行打包工具都有借鉴Webpack的设计思想，三大框架都选用Webpack作为推荐的打包工具，大量开源项目也使用它来进行打包，所以学会如何使用它很有必要。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-06-06T09:43:39.679Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用webpack打包你的代码">
+<meta name="twitter:description" content="Webpack是目前最流行的代码打包工具，大部分命令行打包工具都有借鉴Webpack的设计思想，三大框架都选用Webpack作为推荐的打包工具，大量开源项目也使用它来进行打包，所以学会如何使用它很有必要。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://ntnyq.github.io/bundle-your-codes-via-webpack/">
+
+
+
+
+
+  <title>使用webpack打包你的代码 | 程序员不好吃</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">程序员不好吃</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">ntnyq的个人博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archive" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-navs">
+          <a href="/nav" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-flag"></i> <br>
+            
+            前端导航
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ntnyq.github.io/bundle-your-codes-via-webpack/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ntnyq">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序员不好吃">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">使用webpack打包你的代码</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-06T22:36:03+00:00">
+                2018-05-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/category/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/bundle-your-codes-via-webpack/" class="leancloud_visitors" data-flag-title="使用webpack打包你的代码">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  Webpack是目前最流行的代码打包工具，大部分命令行打包工具都有借鉴Webpack的设计思想，三大框架都选用Webpack作为推荐的打包工具，大量开源项目也使用它来进行打包，所以学会如何使用它很有必要。
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://github.com/webpack/webpack" target="_blank" rel="noopener"><strong>Webpack</strong></a>是目前最流行的代码打包工具，大部分命令行打包工具都有借鉴Webpack的设计思想，三大框架都选用Webpack作为推荐的打包工具，大量开源项目也使用它来进行打包，所以学会如何使用它很有必要。</p>
+<a id="more"></a>
+
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>本篇博文是承接先前的一篇博文<a href="http://ntnyq.github.io/webpack-abc/">webpack入门学习-基础篇</a>的入门到进阶层次的文章。文章的核心还是关于如何配置和使用Webpack。并未涵盖Webpack的大部分高级特性。</p>
+<p>目前 <strong>Webpack</strong>的最新版本为<code>v4.7.0。</code></p>
+<p>不过从<code>4.x.x</code>版本开始，为了改善大型项目Webpack配置困难的痛点，<strong>Webpack</strong>开始走部分技术推崇的<em>约定大于配置</em>的路线，而现有的比如<code>Vue</code>之类项目脚手架的webpack工具，仍然依赖的是<code>3.x.x</code>的版本。</p>
+<p>所以本篇文章使用的webpack版本为<code>3.6.0</code>。</p>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>可以通过如下的方式来下载Webpack作为项目<strong>开发</strong>依赖：</p>
+<blockquote>
+<p>开发依赖的包的信息，会保存在<code>package.json</code>文件的<code>devDependencies</code>字段里。</p>
+</blockquote>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># NPM</span></span><br><span class="line">$ npm install webpack@^3.6.0 --save--dev  <span class="comment"># npm i webpack@^3.6.0 -D</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Yarn</span></span><br><span class="line">$ yarn add webpack@^3.6.0 --dev</span><br></pre></td></tr></table></figure></div>
+
+<p>查看当前Webpack依赖版本</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$  .\node_modules\.bin\webpack -v</span><br><span class="line"></span><br><span class="line"><span class="comment"># Output</span></span><br><span class="line">3.6.0 <span class="comment"># 正确输出了版本</span></span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li><a href="https://github.com/webpack/webpack" target="_blank" rel="noopener">Webpack Github Repo</a>  Webpack Github仓库</li>
+<li><a href="https://webpack.js.org/" target="_blank" rel="noopener">Webpack Official Website</a> Webpack官方网站</li>
+</ul>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><blockquote>
+<p>Webpack需要通过命令行工具(<strong>Shell</strong>)来进行使用。</p>
+</blockquote>
+<h3 id="查看webpack命令行参数"><a href="#查看webpack命令行参数" class="headerlink" title="查看webpack命令行参数"></a>查看webpack命令行参数</h3><p>可以看到webpack支持的参数十分丰富，具体参数用法可以参考<a href="https://webpack.js.org/concepts/" target="_blank" rel="noopener">官方文档</a>。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br></pre></td><td class="code"><pre><span class="line">$ .\node_modules\.bim\webpack --<span class="built_in">help</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出结果</span></span><br><span class="line">Hash: 91e97ca469d808640ddb</span><br><span class="line">Version: webpack 3.6.0</span><br><span class="line">Time: 52ms</span><br><span class="line">    Asset     Size  Chunks             Chunk Names</span><br><span class="line">bundle.js  2.57 kB       0  [emitted]  main</span><br><span class="line">   [0] ./src/js/main.js 101 bytes &#123;0&#125; [built]</span><br><span class="line">PS C:\Users\M S I\Desktop\webpack-demo&gt; .\node_modules\.bin\webpack</span><br><span class="line">No configuration file found and no output filename configured via CLI option.</span><br><span class="line">A configuration file could be named <span class="string">'webpack.config.js'</span> <span class="keyword">in</span> the current directory.</span><br><span class="line">Use --<span class="built_in">help</span> to display the CLI options.</span><br><span class="line">PS C:\Users\M S I\Desktop\webpack-demo&gt; .\node_modules\.bin\webpack --<span class="built_in">help</span></span><br><span class="line">webpack 3.6.0</span><br><span class="line">Usage: https://webpack.js.org/api/cli/</span><br><span class="line">Usage without config file: webpack &lt;entry&gt; [&lt;entry&gt;] &lt;output&gt;</span><br><span class="line">Usage with config file: webpack</span><br><span class="line"></span><br><span class="line">Config options:</span><br><span class="line">  --config       Path to the config file</span><br><span class="line">                         [string] [default: webpack.config.js or webpackfile.js]</span><br><span class="line">  --config-name  Name of the config to use                              [string]</span><br><span class="line">  --env          Environment passed to the config, when it is a <span class="keyword">function</span></span><br><span class="line"></span><br><span class="line">Basic options:</span><br><span class="line">  --context    The root directory <span class="keyword">for</span> resolving entry point and stats</span><br><span class="line">                                       [string] [default: The current directory]</span><br><span class="line">  --entry      The entry point                                          [string]</span><br><span class="line">  --watch, -w  Watch the filesystem <span class="keyword">for</span> changes                        [boolean]</span><br><span class="line">  --debug      Switch loaders to debug mode                            [boolean]</span><br><span class="line">  --devtool    Enable devtool <span class="keyword">for</span> better debugging experience (Example:</span><br><span class="line">               --devtool <span class="built_in">eval</span>-cheap-module-source-map)                  [string]</span><br><span class="line">  -d           shortcut <span class="keyword">for</span> --debug --devtool <span class="built_in">eval</span>-cheap-module-source-map</span><br><span class="line">               --output-pathinfo                                       [boolean]</span><br><span class="line">  -p           shortcut <span class="keyword">for</span> --optimize-minimize --define</span><br><span class="line">               process.env.NODE_ENV=<span class="string">"production"</span>                       [boolean]</span><br><span class="line">  --progress   Print compilation progress <span class="keyword">in</span> percentage                [boolean]</span><br><span class="line"></span><br><span class="line">Module options:</span><br><span class="line">  --module-bind       Bind an extension to a loader                     [string]</span><br><span class="line">  --module-bind-post                                                    [string]</span><br><span class="line">  --module-bind-pre                                                     [string]</span><br><span class="line"></span><br><span class="line">Output options:</span><br><span class="line">  --output-path                 The output path <span class="keyword">for</span> compilation assets</span><br><span class="line">                                       [string] [default: The current directory]</span><br><span class="line">  --output-filename             The output filename of the bundle</span><br><span class="line">                                                   [string] [default: [name].js]</span><br><span class="line">  --output-chunk-filename       The output filename <span class="keyword">for</span> additional chunks</span><br><span class="line">       [string] [default: filename with [id] instead of [name] or [id] prefixed]</span><br><span class="line">  --output-source-map-filename  The output filename <span class="keyword">for</span> the SourceMap   [string]</span><br><span class="line">  --output-public-path          The public path <span class="keyword">for</span> the assets          [string]</span><br><span class="line">  --output-jsonp-function       The name of the jsonp <span class="keyword">function</span> used <span class="keyword">for</span> chunk</span><br><span class="line">                                loading                                 [string]</span><br><span class="line">  --output-pathinfo             Include a comment with the request <span class="keyword">for</span> every</span><br><span class="line">                                dependency (require, import, etc.)     [boolean]</span><br><span class="line">  --output-library              Expose the exports of the entry point as library</span><br><span class="line">                                                                        [string]</span><br><span class="line">  --output-library-target       The <span class="built_in">type</span> <span class="keyword">for</span> exposing the exports of the entry</span><br><span class="line">                                point as library                        [string]</span><br><span class="line"></span><br><span class="line">Advanced options:</span><br><span class="line">  --records-input-path       Path to the records file (reading)         [string]</span><br><span class="line">  --records-output-path      Path to the records file (writing)         [string]</span><br><span class="line">  --records-path             Path to the records file                   [string]</span><br><span class="line">  --define                   Define any free var <span class="keyword">in</span> the bundle          [string]</span><br><span class="line">  --target                   The targeted execution environment         [string]</span><br><span class="line">  --cache                    Enable <span class="keyword">in</span> memory caching									 [boolean] </span><br><span class="line">                      					[default: It<span class="string">'s enabled by default when watching]</span></span><br><span class="line"><span class="string">                      					</span></span><br><span class="line"><span class="string">  --watch-stdin, --stdin     Exit the process when stdin is closed     [boolean]</span></span><br><span class="line"><span class="string">  --watch-aggregate-timeout  Timeout for gathering changes while watching</span></span><br><span class="line"><span class="string">  --watch-poll               The polling interval for watching (also enable</span></span><br><span class="line"><span class="string">                             polling)                                   [string]</span></span><br><span class="line"><span class="string">  --hot                      Enables Hot Module Replacement            [boolean]</span></span><br><span class="line"><span class="string">  --prefetch                 Prefetch this request (Example: --prefetch</span></span><br><span class="line"><span class="string">                             ./file.js)                                 [string]</span></span><br><span class="line"><span class="string">  --provide                  Provide these modules as free vars in all modules</span></span><br><span class="line"><span class="string">                             (Example: --provide jQuery=jquery)         [string]</span></span><br><span class="line"><span class="string">  --labeled-modules          Enables labeled modules                   [boolean]</span></span><br><span class="line"><span class="string">  --plugin                   Load this plugin                           [string]</span></span><br><span class="line"><span class="string">  --bail                     Abort the compilation on first error</span></span><br><span class="line"><span class="string">                                                       [boolean] [default: null]</span></span><br><span class="line"><span class="string">  --profile                  Profile the compilation and include information in</span></span><br><span class="line"><span class="string">                             stats                     [boolean] [default: null]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Resolving options:</span></span><br><span class="line"><span class="string">  --resolve-alias         Setup a module alias for resolving (Example:</span></span><br><span class="line"><span class="string">                          jquery-plugin=jquery.plugin)                  [string]</span></span><br><span class="line"><span class="string">  --resolve-extensions    Setup extensions that should be used to resolve</span></span><br><span class="line"><span class="string">                          modules (Example: --resolve-extensions .es6,.js)</span></span><br><span class="line"><span class="string">                                                                         [array]</span></span><br><span class="line"><span class="string">  --resolve-loader-alias  Setup a loader alias for resolving            [string]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Optimizing options:</span></span><br><span class="line"><span class="string">  --optimize-max-chunks      Try to keep the chunk count below a limit</span></span><br><span class="line"><span class="string">  --optimize-min-chunk-size  Try to keep the chunk size above a limit</span></span><br><span class="line"><span class="string">  --optimize-minimize        Minimize javascript and switches loaders to</span></span><br><span class="line"><span class="string">                             minimizing                                [boolean]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Stats options:</span></span><br><span class="line"><span class="string">  --color, --colors               Enables/Disables colors on the console</span></span><br><span class="line"><span class="string">                                           [boolean] [default: (supports-color)]</span></span><br><span class="line"><span class="string">  --sort-modules-by               Sorts the modules list by property in module</span></span><br><span class="line"><span class="string">                                                                        [string]</span></span><br><span class="line"><span class="string">  --sort-chunks-by                Sorts the chunks list by property in chunk</span></span><br><span class="line"><span class="string">                                                                        [string]</span></span><br><span class="line"><span class="string">  --sort-assets-by                Sorts the assets list by property in asset</span></span><br><span class="line"><span class="string">                                                                        [string]</span></span><br><span class="line"><span class="string">  --hide-modules                  Hides info about modules             [boolean]</span></span><br><span class="line"><span class="string">  --display-exclude               Exclude modules in the output         [string]</span></span><br><span class="line"><span class="string">  --display-modules               Display even excluded modules in the output</span></span><br><span class="line"><span class="string">                                                                       [boolean]</span></span><br><span class="line"><span class="string">  --display-max-modules           Sets the maximum number of visible modules in</span></span><br><span class="line"><span class="string">                                  output                                [number]</span></span><br><span class="line"><span class="string">  --display-chunks                Display chunks in the output         [boolean]</span></span><br><span class="line"><span class="string">  --display-entrypoints           Display entry points in the output   [boolean]</span></span><br><span class="line"><span class="string">  --display-origins               Display origins of chunks in the output</span></span><br><span class="line"><span class="string">                                                                       [boolean]</span></span><br><span class="line"><span class="string">  --display-cached                Display also cached modules in the output</span></span><br><span class="line"><span class="string">                                                                       [boolean]</span></span><br><span class="line"><span class="string">  --display-cached-assets         Display also cached assets in the output</span></span><br><span class="line"><span class="string">                                                                       [boolean]</span></span><br><span class="line"><span class="string">  --display-reasons               Display reasons about module inclusion in the</span></span><br><span class="line"><span class="string">                                  output                               [boolean]</span></span><br><span class="line"><span class="string">  --display-depth                 Display distance from entry point for each</span></span><br><span class="line"><span class="string">                                  module                               [boolean]</span></span><br><span class="line"><span class="string">  --display-used-exports          Display information about used exports in</span></span><br><span class="line"><span class="string">                                  modules (Tree Shaking)               [boolean]</span></span><br><span class="line"><span class="string">  --display-provided-exports      Display information about exports provided</span></span><br><span class="line"><span class="string">                                  from modules                         [boolean]</span></span><br><span class="line"><span class="string">  --display-optimization-bailout  Display information about why optimization</span></span><br><span class="line"><span class="string">                                  bailed out for modules               [boolean]</span></span><br><span class="line"><span class="string">  --display-error-details         Display details about errors         [boolean]</span></span><br><span class="line"><span class="string">  --display                       Select display preset (verbose, detailed,</span></span><br><span class="line"><span class="string">                                  normal, minimal, errors-only, none)   [string]</span></span><br><span class="line"><span class="string">  --verbose                       Show more details                    [boolean]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Options:</span></span><br><span class="line"><span class="string">  --help, -h     Show help                                             [boolean]</span></span><br><span class="line"><span class="string">  --version, -v  Show version number                                   [boolean]</span></span><br><span class="line"><span class="string">  --json, -j     Prints the result as JSON.                            [boolean]</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="打包生成信息"><a href="#打包生成信息" class="headerlink" title="打包生成信息"></a>打包生成信息</h3><p>每次打包结束后，命令行就会输出如下信息：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Hash: 91e97ca469d808640ddb <span class="comment"># 此次打包文件(main.js)的哈希值</span></span><br><span class="line">Version: webpack 3.6.0 <span class="comment"># 当前webpack的版本</span></span><br><span class="line">Time: 53ms <span class="comment"># 打包耗时</span></span><br><span class="line">    Asset     Size  Chunks             Chunk Names</span><br><span class="line">bundle.js  2.57 kB       0  [emitted]  main <span class="comment"># 打包生成文件名 大小等</span></span><br><span class="line">   [0] ./src/js/main.js 101 bytes &#123;0&#125; [built] <span class="comment"># 打包生成的文件目录 及打包成功提示</span></span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p>每次执行打包命令时，如果文件未发生变化，那么打包文件的哈希值是不变的。</p>
+</blockquote>
+<h3 id="命令行工具使用"><a href="#命令行工具使用" class="headerlink" title="命令行工具使用"></a>命令行工具使用</h3><h4 id="简单打包单个文件"><a href="#简单打包单个文件" class="headerlink" title="简单打包单个文件"></a>简单打包单个文件</h4><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$  .\node_modules\.bin\webpack .\src\js\main.js ./dist/bundle.js</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li><strong>执行程序</strong>  .\node_modules.bin\webpack 因为是在命令行执行所以需要加上路径</li>
+<li><strong>入口文件</strong>  指定一个入口文件，作为要打包的所有资源的注入点。</li>
+<li><strong>生成文件</strong> 打包生成的最终文件，内部已经实现模块化，可为1个或者多个。</li>
+</ul>
+<h4 id="命令行监控文件并打包"><a href="#命令行监控文件并打包" class="headerlink" title="命令行监控文件并打包"></a>命令行监控文件并打包</h4><p>此种打包模式可以通过在打包命令后添加<code>--watch</code>来实现，避免每次修改源文件后都需要手动执行打包命令。</p>
+<p>通过此种方式运行命令后，命令行程序不会主动退出，每次修改源码后，命令行会显示新的打包结果相关信息。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$  .\node_modules\.bin\webpack .\src\js\main.js ./dist/bundle.js --watch</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="NPM-Scripts使用"><a href="#NPM-Scripts使用" class="headerlink" title="NPM Scripts使用"></a>NPM Scripts使用</h3><blockquote>
+<p>NPM Scripts是Nodejs为NPM提供的可以运行自定义脚本的一个配置字段。</p>
+</blockquote>
+<p><code>package.json</code>关键部分如下：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"build"</span>: <span class="string">"webpack src/js/main.js dist/bundle.js"</span>, </span><br><span class="line">    <span class="string">"watch"</span>: <span class="string">"webpack src/js/main.js dist/bundle.js --watch"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>要在<code>watch</code>的时候<strong>复用</strong><code>build</code>的命令，可以这样实现<code>npm run build -- --watch</code></p>
+<h3 id="项目中使用"><a href="#项目中使用" class="headerlink" title="项目中使用"></a>项目中使用</h3><p>项目中使用推荐通过编写<code>webpack.config.js</code>的方式与<code>NPM Scripts</code>结合使用。</p>
+<p>Webpack会自动尝试加载项目根目录下的<code>webpack.config.js</code>文件，并导入其内配置好的所有配置，来执行打包。</p>
+<p>当然我们可以通过<code>--config</code>参数来提供一个别的名字的配置文件。</p>
+<p>接下来就记录一下如何进行简单且常用的webpack配置。</p>
+<h2 id="配置Webpack"><a href="#配置Webpack" class="headerlink" title="配置Webpack"></a>配置Webpack</h2><blockquote>
+<p>在项目根目录下创建<code>webapck.config.js</code>文件。</p>
+</blockquote>
+<p><code>webpack.config.js</code>文件需要通过<strong>Commonjs</strong>规范导出一个<code>JavaScript</code>对象，这个对象将成为webpack的打包配置。</p>
+<h3 id="添加环境变量"><a href="#添加环境变量" class="headerlink" title="添加环境变量"></a>添加环境变量</h3><p>通常情况下，我们需要将开发过程的环境分为：</p>
+<ol>
+<li>开发环境</li>
+<li>生产环境</li>
+<li>测试环境</li>
+</ol>
+<p>在不同的环境中，我们通常会对代码的打包有不同的需求。比如在开发调试过程中，未压缩过的代码可读性更好（当然现在有sourceMap）。但是我们会希望开发过程中项目打包时间比较快，我们可能并不需要执行部分工作。而且，可能以上3个环境，我们都会有不止一个。所以，我们希望环境是可以配置的。</p>
+<p>实际应用中，我们可以通过在执行打包命令的时候以传入环境变量参数的方式来区分环境。</p>
+<p>比如，在开发环境中，我们可以将表示环境的参数设置为<code>development</code>，生产环境设置为<code>production</code>，测试环境设置为<code>test</code>。</p>
+<p>因为操作系统的原因，我们需要通过不同的方式来传入参数，比如<code>Mac OS</code>或者<code>Linux</code>中通过<code>NODE_ENV=env_name</code>来实现，而在windows中，则需要通过<code>set NODE_ENV=env_name</code>来实现。</p>
+<p>这个差异可以通过<code>cross-env</code>包来消除。</p>
+<p>这个对象主要包括了如下字段：</p>
+<h3 id="Entry"><a href="#Entry" class="headerlink" title="Entry"></a>Entry</h3><p>文件打包的入口，所有的文件都要直接或间接地在这里产生依赖，才能被webpack程序运行时识别到。</p>
+<p>配置示例：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: <span class="string">'./path_to_file/entry_name.js'</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+
+<p>上面的配置会被webpack转化成如下的形式：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: &#123;</span><br><span class="line">    main: <span class="string">'./path_to_file/entry_name.js'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+
+<p>最终生成的文件名[<strong>chunkName</strong>]为<code>main</code></p>
+<p>通常我们会将<code>entry</code>配置写为如下的形式:</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: &#123;</span><br><span class="line">    app: <span class="string">'./path_to_file/entry_name.js'</span>,</span><br><span class="line">    vendors: [<span class="string">'module1'</span>, <span class="string">'module2'</span>, <span class="string">'module3'</span>]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li><code>app</code>用来打包页面的主js文件，它可能会随着产品的迭代经常更改。</li>
+<li><code>vendors</code>用来打包项目依赖，<code>dependencies</code>字段中一些可能长期不变的文件。</li>
+</ul>
+<blockquote>
+<p>优点：可以方便利用文件的强制缓存，加快页面的加载速度，提升用户体验。</p>
+</blockquote>
+<p>参数为<strong>数组</strong>格式的，会将多个文件打包到一起。</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p><strong>Output</strong>用于告知<code>webpack</code>打包后生成文件的目录，注意只能指定一个输出配置。</p>
+<p>要使用此配置，最少需要配置2个属性。</p>
+<ol>
+<li>提供一个打包后生成的文件名格式。</li>
+<li>提供一个文件生成的<strong>绝对路径</strong>。</li>
+</ol>
+<p>使用如下：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: <span class="string">'bundle.js'</span>,</span><br><span class="line">    path: path.resolve(__dirname, <span class="string">'./dist'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+
+<p>因为要使用绝对路径，所以我们需要引入Node内置的<code>path</code>包。</p>
+<p>在配置filename的时候我们可以使用一些模板语法，如<code>[name]</code>， <code>[chunkHash]</code>，<code>[hash]</code>，分别代表：</p>
+<ul>
+<li>name 指定的输入文件名，打包前的文件名</li>
+<li>hash 本次打包的hash值</li>
+<li>chunkHash 本文件的hash值，使用chunkHash能利用文件打包的缓存。</li>
+</ul>
+<h3 id="Devtool"><a href="#Devtool" class="headerlink" title="Devtool"></a>Devtool</h3><p>此字段用于配置如何生成<code>sourcemap</code>文件。</p>
+<p>可配置参数有<code>none</code>，<code>#cheap-module-eval-source-map</code>等。</p>
+<p><a href="https://webpack.js.org/configuration/devtool/#devtool" target="_blank" rel="noopener">详细内容与对比请戳</a></p>
+<h3 id="DevServer"><a href="#DevServer" class="headerlink" title="DevServer"></a>DevServer</h3><p>用于配置<code>webpack-dev-server</code>插件，常用于开发环境中开启本地开发服务器。</p>
+<p>依赖于<code>webpack-dev-server</code>包，需要另外下载：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npm install webpack-dev-server -D</span><br><span class="line"></span><br><span class="line">$ yarn add webpack-dev-server --dev</span><br></pre></td></tr></table></figure></div>
+
+<p> 此字段配置方式如下：</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  devServer: &#123;</span><br><span class="line">    contentBase: <span class="string">'./dist/'</span>, <span class="comment">// 服务器启动根目录</span></span><br><span class="line">    inline: <span class="literal">true</span>,</span><br><span class="line">    open: <span class="literal">true</span>, <span class="comment">// 自动打开浏览器</span></span><br><span class="line">    hot: <span class="literal">true</span>, <span class="comment">// 热更新模块</span></span><br><span class="line">    noInfo: <span class="literal">true</span> <span class="comment">// 隐藏 更新文件时的打包信息 只在保存文件和重新打开时展现</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>有钱，任性！！！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="ntnyq WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="ntnyq Alipay">
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    ntnyq
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://ntnyq.github.io/bundle-your-codes-via-webpack/" title="使用webpack打包你的代码">https://ntnyq.github.io/bundle-your-codes-via-webpack/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tag/Webpack/" rel="tag"><i class="fa fa-tag"></i> Webpack</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/use-eslint-linter-js-code/" rel="next" title="使用ESLint进行JavaScript代码检查。">
+                <i class="fa fa-chevron-left"></i> 使用ESLint进行JavaScript代码检查。
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/hsl-color-abc/" rel="prev" title="不止是RGB，学习HSL颜色">
+                不止是RGB，学习HSL颜色 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="ntnyq">
+          <p class="site-author-name" itemprop="name">ntnyq</p>
+           
+              <p class="site-description motion-element" itemprop="description">未来的不可知，是我们前进的原动力。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archive">
+                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">73</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ntnyq" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="mailto:lssham@qq.com" target="_blank" title="E-Mail">
+                  
+                    <i class="fa fa-fw fa-envelope"></i>
+                  
+                    
+                      E-Mail
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.qdfuns.com/u/35320.html" target="_blank" title="前端网">
+                  
+                    <i class="fa fa-fw fa-html5"></i>
+                  
+                    
+                      前端网
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://segmentfault.com/u/ntnyq" target="_blank" title="SegmentFault">
+                  
+                    <i class="fa fa-fw fa-skype"></i>
+                  
+                    
+                      SegmentFault
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons">
+            </a>
+          </div>
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载"><span class="nav-number">2.</span> <span class="nav-text">下载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">3.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看webpack命令行参数"><span class="nav-number">3.1.</span> <span class="nav-text">查看webpack命令行参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#打包生成信息"><span class="nav-number">3.2.</span> <span class="nav-text">打包生成信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令行工具使用"><span class="nav-number">3.3.</span> <span class="nav-text">命令行工具使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简单打包单个文件"><span class="nav-number">3.3.1.</span> <span class="nav-text">简单打包单个文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#命令行监控文件并打包"><span class="nav-number">3.3.2.</span> <span class="nav-text">命令行监控文件并打包</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NPM-Scripts使用"><span class="nav-number">3.4.</span> <span class="nav-text">NPM Scripts使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#项目中使用"><span class="nav-number">3.5.</span> <span class="nav-text">项目中使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置Webpack"><span class="nav-number">4.</span> <span class="nav-text">配置Webpack</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加环境变量"><span class="nav-number">4.1.</span> <span class="nav-text">添加环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Entry"><span class="nav-number">4.2.</span> <span class="nav-text">Entry</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output"><span class="nav-number">4.3.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Devtool"><span class="nav-number">4.4.</span> <span class="nav-text">Devtool</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DevServer"><span class="nav-number">4.5.</span> <span class="nav-text">DevServer</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ntnyq</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+    由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+  </div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">
+    主题 &mdash;
+    <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+      NexT.Pisces
+    </a>
+  </div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("3s8V1tX4p21JMzAS7gDhpqhJ-gzGzoHsz", "79eNcXcP3KFVxDbCXA8aOsV3");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
